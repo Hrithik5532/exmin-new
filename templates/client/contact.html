@@ -1,0 +1,159 @@
+{% extends "client/template.html" %}
+{% load static %}
+
+{% block content %}
+    
+    <body class="bg-slate-50">
+        <!-- Loader Start -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader End -->
+        
+        
+
+        <!-- Google Map -->
+        <div class="container-fluid relative mt-20">
+            <div class="grid grid-cols-1">
+                <div class="w-full leading-[0] border-0">
+                    {% comment %} <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin" style="border:0" class="w-full h-[500px]" allowfullscreen></iframe> {% endcomment %}
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30154.52926483166!2d72.97798430823016!3d19.137633253072103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0c85768380d%3A0x7592893d18d8c85f!2sAliance%20Institute%20Of%20Export%20Import%20Management%20pune%20branch!5e0!3m2!1sen!2sin!4v1706938497978!5m2!1sen!2sin" class="w-full h-[500px]" style="border:0;" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div><!--end grid-->
+        </div><!--end container-->
+        <!-- Google Map -->
+
+        <!-- Start Section-->
+        <section class="relative lg:py-24 py-16">
+            <div class="container">
+                <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
+                    <div class="lg:col-span-7 md:col-span-6">
+                        <div class="lg:ms-5">
+                            <div class="bg-white dark:bg-slate-900 rounded-xl shadow dark:shadow-gray-700 p-8">
+                                <h3 class="mb-6 text-2xl leading-normal font-semibold">Get in touch !</h3>
+
+                                <form method="POST" action="{% url 'contact' %}" name="myForm" id="myForm" >
+                                    {% csrf_token %}
+                                    <p class="mb-0" id="error-msg"></p>
+                                    <div id="simple-msg"></div>
+                                    <div class="grid lg:grid-cols-12 lg:gap-6">
+                                        <div class="lg:col-span-6 mb-5">
+                                            <label for="first_name" class="font-semibold">First Name:</label>
+                                            <input  name="first_name" id="name" type="text" class="form-input border border-slate-100 dark:border-slate-800 mt-2" placeholder="Name :">
+                                        </div>
+        
+                                        <div class="lg:col-span-6 mb-5">
+                                            <label for="last_name" class="font-semibold">Last Name:</label>
+                                            <input  name="last_name" id="name" type="text" class="form-input border border-slate-100 dark:border-slate-800 mt-2" placeholder="Name :">
+                                        </div>
+                                    </div>
+    
+                                    <div class="grid grid-cols-1">
+                                        <div class="mb-5">
+                                            <label for="email" class="font-semibold">Your Email:</label>
+                                            <input name="email" id="email" type="email" class="form-input border border-slate-100 dark:border-slate-800 mt-2" placeholder="Email :">
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label for="phone_number">Phone Number</label>
+                                            <input type="text" name="phone_number" class="form-input border border-slate-100 dark:border-slate-800 mt-2" id="phone_number" placeholder="Enter Phone Number">
+                                        </div>
+    
+                                        <div class="mb-5">
+                                            <label for="comments" class="font-semibold">Your Comment:</label>
+                                            <textarea name="comments" id="comments" class="form-input border border-slate-100 dark:border-slate-800 mt-2 textarea" placeholder="Message :"></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="submit" name="send" class="btn bg-blue-600 hover:bg-blue-700 text-white rounded-md">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 md:col-span-6">
+                        <div class="lg:ms-5">
+                            <div class="bg-blue-400 text-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-700 p-6">
+                                <h3 class="mb-6 text-2xl leading-normal font-semibold text-center">Get in touch !</h3>
+
+                                <div class="text-start px-6 flex  items-center">
+                                    <div class="relative text-transparent">
+                                        <div class="size-14 bg-white text-blue-600 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
+                                            <i class="uil uil-map-marker"></i>
+                                        </div>
+                                    </div>
+            
+                                    <div class="content mt-7 px-6">
+                                        <h5 class="title h5 text-lg font-semibold ">Eximjobs</h5>
+                                        <p class=" text-sm">Exim House, Row House Plot No. 127, Sector-5, Ghansoli,Navi Mumbai - 400701 </p>
+                                        
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="text-start px-6 flex items-center py-4">
+                                    <div class="relative text-transparent flex">
+                                        <div class="size-14 bg-white text-blue-600 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
+                                            <i class="uil uil-phone"></i>
+                                        </div>
+                                    </div>
+            
+                                    <div class="content mt-5 px-6">
+                                        <h5 class="title h5 text-lg font-semibold">Phone</h5>
+                                                                                
+                                        <div class="">
+                                            <a href="" class="btn btn-link text-white hover:text-gray-100 after:bg-blue-600 transition duration-500">9594181568 / 9320909826</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-start px-6 flex  items-center">
+                                    <div class="relative text-transparent">
+                                        <div class="size-14 bg-white text-blue-600 rounded-xl text-2xl flex align-middle justify-center items-center mx-auto shadow-sm dark:shadow-gray-800">
+                                            <i class="uil uil-envelope"></i>
+                                        </div>
+                                    </div>
+            
+                                    <div class="content mt-5 px-6">
+                                        <h5 class="title h5 text-lg font-semibold">Email</h5>
+                                        
+                                        <div class="">
+                                            <a href="mailto:admin@eximjobs.com" class="btn btn-link text-gray-100 after:bg-blue-600 transition duration-500">admin@eximjobs.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end container-->
+            
+            
+        </section><!--end section-->
+        <!-- End Section-->
+
+        
+        <!-- End Footer -->
+        
+
+     
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 end-5 size-9 text-center bg-blue-600 text-white justify-center items-center"><i class="uil uil-arrow-up"></i></a>
+        <!-- Back to top -->
+
+        <!-- JAVASCRIPTS -->
+        <script src="../../static/assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="../../static/assets/libs/feather-icons/feather.min.js"></script>
+        <script src="../../static/assets/js/plugins.init.js"></script>
+        <script src="../../static/assets/js/app.js"></script>
+        <!-- JAVASCRIPTS -->
+    </body>
+
+    {% endblock content %}

@@ -1,0 +1,69 @@
+{% extends "client/template.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-no-repeat bg-center bg-cover" style="background-image: url('../../static/assets/images/hero/bg5.jpg')">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+    <div class="container">
+        <div class="grid md:grid-cols-2 grid-cols-1">
+            <div class="relative overflow-hidden bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md mt-16">
+                <div class="p-6">
+                    <a href="">
+                        <img src="../static/assets/images/EximLogo.png" class="mx-auto  flex" alt="" style="height:30px;">
+                    </a>
+                    <h5 class="my-6 text-xl font-semibold">Signup</h5>
+                    <form class="text-start" action="{% url 'candidate-register' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="grid grid-cols-1">
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="RegisterName">First Name:</label>
+                                <input id="FirstName" type="text" name="first_name" class="form-input mt-3 rounded-md" placeholder="Harry">
+                            </div>
+
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="RegisterName">Last Name:</label>
+                                <input id="LastName" type="text" name="last_name" class="form-input mt-3 rounded-md" placeholder="Harry">
+                            </div>
+
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="LoginEmail">Phone Number:</label>
+                                <input id="phone" type="number" name="phone" class="form-input mt-3 rounded-md" placeholder="name@example.com">
+                            </div>
+
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="LoginEmail">Email Address:</label>
+                                <input id="LoginEmail" type="email" name="email" class="form-input mt-3 rounded-md" placeholder="name@example.com">
+                            </div>
+
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="LoginPassword">Password:</label>
+                                <input id="LoginPassword" type="password" name="password" class="form-input mt-3 rounded-md" placeholder="Password:">
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="flex items-center mb-0">
+                                    <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-emerald-600 focus:border-emerald-300 focus:ring focus:ring-offset-0 focus:ring-emerald-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="Accept:T&C">
+                                    <label class="form-checkbox-label text-slate-400" for="Accept:T&C">I Accept <a href="" class="text-emerald-600">Terms And Condition</a></label>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <button type="submit" class="success btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 text-white rounded-md w-full">Register</button>
+                            </div>
+
+                            <div class="text-center">
+                                <span class="text-slate-400 me-2">Already have an account ? </span> <a href="{% url 'signin' %}" class="text-black dark:text-white font-bold">Sign in</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+    
+
+</section>
+{% endblock content %}

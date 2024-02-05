@@ -1,0 +1,83 @@
+{% extends "client/template.html" %}
+{% load static %}   
+
+{% block content %}
+<style>
+    .Orclass{
+        width: 70px;
+        height: 70px;
+        background: #3468b2;
+        position: absolute;
+        left: 47%; 
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        margin-top: -20px;
+        z-index:2;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .Orclass p{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left:-15px;
+        margin-top: -17px;
+        transform: translate(-50%, -50%);
+        -ms-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+</style>
+<section class="min-h-screen mt-16 flex items-center justify-center relative overflow-hidden bg-[url('https://shreethemes.in/Eximjobs/layouts/../static/assets/images/hero/bg3.jpg')] bg-no-repeat bg-center bg-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+    <div class="container">
+       
+        <h5 class="my-6 text-xl font-semibold" style="    text-align: center;">Already Register !! <a style="color:green" href="{% url 'signin' %}">Sign In</a> </h5>
+
+        <div class="grid md:grid-cols-2 grid-cols-1">
+            <div class="relative overflow-hidden bg-white dark:bg-slate-900 border dark:shadow-gray-800 rounded-2xl">
+                <div class="p-6">
+                    <h5 class="my-6 text-3xl font-bold text-center">I'm a Candidate</h5>
+                    <div class="">
+                        <img src="../static/assets/images/employee-illustration.png" class="mx-auto flex " alt="logo">
+                    </div>
+                    <div class="justify-center items-center flex my-6">
+                      
+                        <a href="{%url 'candidate-register'%}">
+                            <button class="m-2 text-xl font-semibold bg-red-400 p-2 rounded-xl px-3">Register</button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="Orclass hidden md:block">
+                <p class="text-white font-bold text-lg">OR</p>
+            </div>
+            <div class="relative overflow-hidden bg-white dark:bg-slate-900 border dark:shadow-gray-800 rounded-2xl">
+                <div class="p-6">
+                    <h5 class="my-6 text-3xl font-bold text-center">I'm a Recruiter</h5>
+                    <div class="">
+                        <img src="../static/assets/images/recruiter-illustration.png" class="mx-auto flex " alt="logo" style="height:24rem;">
+                    </div>
+                    <div class="justify-center items-center flex my-6">
+                       
+                        <a href="{%url 'employer-register'%}">
+                            <button class="m-2 text-xl font-semibold bg-red-400 p-2 rounded-xl px-3">Register</button>
+                        </a>
+                    </div>
+                    
+                </div>
+
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

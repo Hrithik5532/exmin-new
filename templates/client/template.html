@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth" dir="ltr">
+    
+<head>
+        <meta charset="UTF-8">
+        <title>Eximjobs | {{title}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta content="Job Listing Landing Template" name="description">
+        <meta content="Job, CV, Career, Resume, Job Portal, Create Job, Post job, tailwind Css" name="keywords">
+        {% comment %} <meta name="author" content="Shreethemes">
+        <meta name="website" content="https://shreethemes.in/">
+        <meta name="email" content="support@shreethemes.in"> {% endcomment %}
+        <meta name="version" content="1.4.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- favicon -->
+        <link rel="shortcut icon" href="../../static/assets/images/Favicon.png">
+
+        <!-- Css -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css">
+        {% comment %} <link href="../../static/assets/libs/tobii/css/tobii.min.css" rel="stylesheet"> {% endcomment %}
+        <link href="../../static/assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet">
+        <!-- Main Css -->
+        <link href="../../static/assets/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet">
+        <link href="../../static/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link href="../../static/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
+        <link href="../../static/assets/css/bg-color.css" rel="stylesheet" type="text/css">
+        <link href="../../static/assets/css/padding-margin.css" rel="stylesheet" type="text/css">
+          <!-- CKEditor script from CDN -->
+          <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+
+    </head>
+    
+    {% include 'client/navbar.html'%}
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {% include 'client/footer.html'%}
+
+    
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <!-- sweetalert js -->
+      <script>
+        var m = "{{ message }}";
+        Swal.fire({
+          icon: "success",
+          text: m,
+          timer: 1500
+
+          
+        });
+      </script>
+      {% endif %}
+
+    {% if message.tags == 'error' %}
+    <!-- sweetalert js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script>
+        var m = "{{ message }}";
+        Swal.fire({
+            iconHtml: '<i data-feather="alert-circle" class="size-16 me-3"></i>',
+            text: m,
+            icon: "error",
+            showConfirmButton: false,
+            timer: 1500
+
+        });
+        </script>
+
+    {% endif %}
+    {% if message.tags == 'info' %}
+    <!-- sweetalert js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script>
+        var m = "{{ message }}";
+        Swal.fire({
+            iconHtml: '<i data-feather="alert-triangle" class="size-16 me-3"></i>',
+            text: m,
+            icon: "info",
+            showConfirmButton: false,
+            timer: 1500
+
+        });
+        </script>
+
+    {% endif %}
+  {% endfor %}
+    <!-- JAVASCRIPTS -->
+    {% comment %} <script src="../../static/assets/libs/tobii/js/tobii.min.js"></script> {% endcomment %}
+    <script src="../../static/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="../../static/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="../../static/assets/js/plugins.init.js"></script>
+    <script src="../../static/assets/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.all.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
+    {% comment %} <script src="../../static/assets/js/tailwind.js"></script> {% endcomment %}
+
+    <!-- JAVASCRIPTS -->
+</html>

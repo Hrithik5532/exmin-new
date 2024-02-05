@@ -1,0 +1,406 @@
+{% extends "client/template.html" %}
+{% load static %}
+
+{% block content %}
+
+        <!-- Start Hero -->
+        <section class="relative table w-full py-24 bg-blue-200 bg-top bg-no-repeat bg-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+            <div class="container">
+                <div class="grid grid-cols-1 text-center mt-10 ">
+                    <h3 class="md:text-3xl text-2xl md:leading-snug tracking-wide leading-snug font-medium text-white">Job Post</h3>
+
+                </div><!--end grid-->
+            </div><!--end container-->
+            
+            <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3 ">
+                <ul class="breadcrumb tracking-[0.5px] breadcrumb-light mb-0 inline-block">
+                    <li class="inline breadcrumb-item text-[15px] font-semibold duration-500 ease-in-out text-white/50 hover:text-white"><a href="index.html">Eximjobs</a></li>
+                    <li class="inline breadcrumb-item text-[15px] font-semibold duration-500 ease-in-out text-white" aria-current="page">Job Post</li>
+                </ul>
+            </div>
+        </section><!--end section-->
+        <div class="relative">
+            <div class="shape absolute start-0 end-0 sm:-bottom-px -bottom-[2px] overflow-hidden z-1 text-slate-50 dark:text-slate-800">
+                <svg class="w-full h-auto" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <!-- End Hero -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Start -->
+        <section class="relative bg-slate-50 dark:bg-slate-800 lg:py-24 py-16">
+            <div class="container">
+                <div class="lg:flex justify-center">
+                    <div class="lg:w-4/5">
+                        <form action="{% url 'job-post' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
+                                <div class="w-full p-2 m-2 bg-gray-300 text-blue-700 text-lg font-bold rounded-lg text-center">
+                                    VACANCY DETAILS
+                                </div>
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3 ">
+                                        <label class="font-semibold" for="job_position">Job Position:</label>
+                                        
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2  ">
+                                        <input id="job_position" name="job_position" type="text" class="form-input mt-3 rounded-md" placeholder="Enter Job Position">
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="mb-4 text-start md:flex block w-full justify-between">
+                                    <div class="flex flex-col p-2">
+                                        <label class="font-semibold" for="RegisterName">Current Industry Type <span style="color:red">*</span>:</label>
+                                        <span class="text-blue-700 text-xs">( You Can Select up to 2 Options )</span>
+                                    </div>
+                                    <div class="flex grid md:grid-cols-2 grid-cols-1 gap-2 px-2 text-xs">
+                                        {% for i in industry_type %}
+                                        <label>
+                                            <input type="checkbox" class="industry-checkbox" value="{{i.name}}">
+                                            {{i.name}}
+                                        </label>
+                                        {% endfor %}
+                                        <input type="hidden" id="selectedIndustries" name="selectedIndustries">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="mb-4 text-start md:flex block w-100 gap-2 ">
+                                    <div class=" px-3 md:w-2/5 ">
+                                        <div class="flex flex-col">
+                                            <label class="font-semibold" for="RegisterName">Functional Area                                       
+                                                <span style="color:red">*</span>:</label>
+                                            <span class="text-blue-700 text-xs ">( You Can Select upto 3 Options )</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-sm flex w-full gap-2 md:w-4/5 ">
+                                        <select class="form-select form-input border block w-full mt-1" name="functional_area">
+                                            {% for i in functional_area %}
+                                            
+                                            <option value="{{i.name}}">{{i.name}}</option>
+                                            {% endfor %}
+                                            </select>
+                                        
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="mb-4 text-start md:flex block w-full gap-2 " >
+                                    <div class="md:w-2/5 px-3 ">
+                                        <label class="font-semibold" for="RegisterName">Operational Area Expertise <span style="color:red">*</span>:</label>
+                                        
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-3 px-2">
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" id="import" name="operational_area" value="Import">
+                                                <label for="import">Import</label>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" id="export" name="operational_area" value="Export">
+                                                <label for="export">Export</label>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" id="other" name="operational_area" value="Other">
+                                                <label for="other">Other</label>
+                                            </div>
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="mb-4 text-start md:flex block w-full justify-between" >
+                                    <div class="md:w-2/5 px-3 ">
+                                        <label class="font-semibold" for="RegisterName">Shipment Expertise <span style="color:red">*</span>:</label>
+                                        
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-3 px-2">
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" id="import" name="shipment_expertise" value="Sea">
+                                                <label for="import">Sea</label>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" id="export" name="shipment_expertise" value="Air">
+                                                <label for="air">Air</label>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <input type="radio" id="both" name="shipment_expertise" value="Both">
+                                                <label for="both">Both</label>
+                                            </div>
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3 ">
+                                        <label class="font-semibold" for="RegisterName"> Position Level <span style="color:red">*</span>:</label>
+                                        
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2  ">
+                                        <select id="position_level" class="form-select form-input border  block w-full mt-1" name="position_level">
+                                            <option value="Full Time">Full Time</option>
+                                            <option value="Part Time">Part Time</option>
+                                            <option value="Work From Home">Work From Home</option>
+                                            <option value="Remote Job">Remote Job</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3">
+                                        <label class="font-semibold" for="RegisterName">State <span style="color:red">*</span>:</label>
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2">
+                                        <select id="stateId" class="states form-select form-input border block w-full mt-1" name="state">
+                                            <option value="Maharashtra">MH</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3">
+                                        <label class="font-semibold" for="RegisterName">City <span style="color:red">*</span>:</label>
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2">
+                                        <select id="cityId" class="form-select form-input border block w-full mt-1" name="city">
+                                            <option value="Mumbai">Mumbai</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3 ">
+                                        <label class="font-semibold" for="job_location">Job Location:</label>
+                                        
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2  ">
+                                        <input id="job_location" name="job_location" type="text" class="form-input mt-3 rounded-md" placeholder="Enter Job Location">
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    
+                                    <div class=" px-3 md:w-2/5 ">
+                                        <div class="flex flex-col">
+                                            <label class="font-semibold" for="international_location">International Location:</label>
+                                            <span class="text-blue-700 text-xs ">(If Applicable)</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2  ">
+                                        <input id="international_location" name="international_location" type="text" class="form-input mt-3 rounded-md" placeholder="Enter International Location">
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="w-full p-2 m-2 bg-gray-300 text-blue-700 text-lg font-bold rounded-lg text-center">
+                                    SALARY AND BENEFITS
+
+                                </div>
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3 ">
+                                        <label class="font-semibold">Salary:</label>
+                                            
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2  ">
+                                        <div class="md:col-span-3 col-span-12 text-start">
+                                            <label class="font-semibold md:invisible md:block hidden">Min:</label>
+                                            <div class="relative mt-1">
+                                                <span class="size-10 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 absolute top-0 start-0 p-2 px-3 overflow-hidden rounded">
+                                                    &#8377
+                                                </span>
+                                                <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="min" name="minsalary">
+                                            </div>
+                                        </div>
+
+                                        <div class="md:col-span-3 col-span-12 text-start">
+                                            <label class="font-semibold md:invisible md:block hidden">Max:</label>
+                                            <div class="relative mt-1">
+                                                <span class="size-10 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 absolute top-0 start-0 p-2 px-3 overflow-hidden rounded">
+                                                    &#x20B9
+                                                </span>
+                                                <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="max" name="maxsalary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3 md:flex-col flex">
+                                        <label class="font-semibold" for="benefits">Other Benefits Description:</label>
+                                        <span class="text-blue-700 text-[0.7rem] ">( eg. Salary, Bonus, Incentives, Mediclaim, Travel Allowance etc.)</span>
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2  ">
+                                        <textarea id="benefits" class=" border border-slate-200 mt-3 rounded-md w-full" rows="3" name="benefits" placeholder="Enter Other Benefits Description"></textarea>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="w-full p-2 m-2 bg-gray-300 text-blue-700 text-lg font-bold rounded-lg text-center">
+                                    SKILL & EXPERIENCES:
+
+
+                                </div>
+                                                            
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3 md:flex-col flex">
+                                        <label class="font-semibold" for="Skillname">Skills:</label>
+                                    </div>
+                                    <div class="text-sm md:flex block w-full md:w-4/5 gap-2  " id="skillsContainer">
+                                        <select id="skills" class="form-select form-input border block w-full mt-1" onchange="handleSkillChange()">
+                                            <option value="">Select</option>
+                                            {% for skill in skill_set %}
+                                        
+                                        <option value="{{skill.name}}">{{skill.name}}</option>
+                                        {% endfor %}
+                                        
+                                            <option >Other</option>
+                                        </select>
+                                        <input type="text" id="customSkillInput" style="display: none;" placeholder="Enter Custom Skill">
+                                        <button id="addSkill" type="button" class="btn" onclick="addNewSkill()">Add</button>
+                                        <!-- Readonly input to store added skills -->
+                                        <input type="hidden" id="addedSkills" name="addedSkills" readonly>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3 md:flex-col flex">
+                                        <label class="font-semibold" for="job_profile">Job Profile Description:</label>
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2  ">
+                                        <textarea id="job_profile" name="job_profile" class="border border-slate-200 mt-3 rounded-md w-full" rows="3" placeholder="Enter Job Profile Description"></textarea>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3 md:flex-col flex">
+                                        <label class="font-semibold" for="experience">Work Experience Required (in years):</label>
+                                        
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2">
+                                        <input id="min_experience" type="number" name="experience" class="form-input mt-3 rounded-md" placeholder="Experience">
+                                    </div>
+
+                                </div>
+                                <div class="mb-4 md:flex block w-full justify-between items-center">
+                                    <div class="md:w-2/5 px-3 md:flex-col flex">
+                                        <label class="font-semibold" for="end_date">Application End Date:</label>
+                                    </div>
+                                    <div class="text-sm flex w-full md:w-4/5 gap-2  ">
+                                        <input type="date" id="end_date" name="end_date" class="form-input mt-3 rounded-md" >
+                                    </div>
+                                
+                                </div>
+                                
+                                <div class='w-full text-center'>
+                                    <button type="submit" id="submit" name="send" class="btn w-full p-2 m-2 text-lg font-bold rounded-lg text-center bg-blue-600 hover:bg-blue-700 border-blue-600  text-white">Post Now</button>
+                                </div>
+                        
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+          
+        </section><!--end section-->
+        <!-- End -->
+
+
+        <script>
+            CKEDITOR.replace('job_profile')
+                
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const checkboxes = document.querySelectorAll('.industry-checkbox');
+                const hiddenInput = document.getElementById('selectedIndustries');
+        
+                let selectedIndustries = [];
+        
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.addEventListener('change', function () {
+                        if (this.checked) {
+                            if (selectedIndustries.length < 2) {
+                                selectedIndustries.push(this.value);
+                            } else {
+                                this.checked = false; // Prevent checking more than 2 checkboxes
+                                alert('Maximum 2 selections allowed.');
+                            }
+                        } else {
+                            selectedIndustries = selectedIndustries.filter(item => item !== this.value);
+                        }
+        
+                        // Update the hidden input value as a JSON string
+                        hiddenInput.value = JSON.stringify(selectedIndustries);
+                    });
+                });
+            });
+        </script>
+
+
+        <script>
+            function handleSkillChange() {
+                const skillsDropdown = document.getElementById('skills');
+                const customSkillInput = document.getElementById('customSkillInput');
+        
+                // Show/hide the custom skill input based on the selected option
+                customSkillInput.style.display = skillsDropdown.value === 'Other' ? 'inline-block' : 'none';
+            }
+        
+            function addNewSkill() {
+                const skillsDropdown = document.getElementById('skills');
+                const customSkillInput = document.getElementById('customSkillInput');
+                const addedSkillsInput = document.getElementById('addedSkills');
+                const selectedSkill = skillsDropdown.value === 'Other' ? customSkillInput.value : skillsDropdown.value;
+        
+                // Check if the skill is already added
+                if (selectedSkill && addedSkillsInput.value.includes(selectedSkill)) {
+                    alert('Skill already added!');
+                    return;
+                }
+        
+                // Create a new skill container span
+                const skillContainer = document.createElement('span');
+        
+                // Create a new button to display the added skill and allow removal
+                const skillButton = document.createElement('button');
+                skillButton.textContent = selectedSkill;
+                skillButton.onclick = function() {
+                    // Remove the corresponding skill when the button is clicked
+                    const removedSkill = skillButton.textContent;
+                    const addedSkills = addedSkillsInput.value ? JSON.parse(addedSkillsInput.value) : [];
+                    addedSkillsInput.value = JSON.stringify(addedSkills.filter(skill => skill !== removedSkill));
+        
+                    // Remove the skill button from the DOM
+                    skillContainer.remove();
+                };
+        
+                // Append the skill button to the skill container
+                skillContainer.appendChild(skillButton);
+        
+                // Append the skill container to the skills container
+                skillsContainer.appendChild(skillContainer);
+        
+                // Append the added skill to the hidden input as an array
+                const addedSkills = addedSkillsInput.value ? JSON.parse(addedSkillsInput.value) : [];
+                addedSkills.push(selectedSkill);
+                addedSkillsInput.value = JSON.stringify(addedSkills);
+        
+                // Reset the dropdown and custom skill input to the default state
+                skillsDropdown.value = '';
+                customSkillInput.value = '';
+                customSkillInput.style.display = 'none';
+            }
+        </script>
+        
+        
+        
+        
+        
+{% endblock content %}

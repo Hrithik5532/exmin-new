@@ -1,0 +1,41 @@
+
+{% extends "client/template.html" %}
+{% load static %}
+
+{% block content %}
+<section class="h-screen flex items-center justify-center relative overflow-hidden bg-no-repeat bg-center bg-cover" style="background-image: url('https://shreethemes.in/Eximjobs/layouts/assets/images/hero/bg3.jpg')">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+    <div class="container">
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+            <div class="relative overflow-hidden bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md">
+                <div class="p-6">
+                    <a href="">
+                        <img src="../static/assets/images/EximLogo.png" class="mx-auto  flex" alt="" style="height:30px;">
+                    </a>
+                    <h5 class="my-6 text-xl font-semibold">OTP sent on {{request.user.email}}</h5>
+                    <form action="{% url 'otp_verification' %}" class="text-start"  method="POST">
+                        {% csrf_token %}
+                        <div class="grid grid-cols-1">
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="otp">Enter OTP</label>
+                                <input id="RegisterName" type="text" name="otp" class="form-input mt-3 rounded-md" placeholder="Harry">
+                            </div>
+
+
+                            <div class="mb-4">
+                                <input type="submit" class="btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 text-white rounded-md w-full" value="Register">
+                            </div>
+
+                          
+                        </div>
+                    </form>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

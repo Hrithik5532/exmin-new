@@ -1,0 +1,56 @@
+{% extends "client/template.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<section class="h-screen flex items-center justify-center relative overflow-hidden bg-no-repeat bg-center bg-cover" style="background-image: url('https://images.pexels.com/photos/1181421/pexels-photo-1181421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+    <div class="container">
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+            <div class="relative overflow-hidden bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md">
+                <div class="p-6">
+                    <a href="#">
+                        <img src="../static/assets/images/EximLogo.png" class="mx-auto  flex" alt="" style="height:30px;">
+                    </a>
+                    <h5 class="my-6 text-xl font-semibold">Login</h5>
+                    <form class="text-start" action="{% url 'signin' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="grid grid-cols-1">
+                            <div class="mb-4 text-start">
+                                    <label class="font-semibold" for="LoginEmail">Email Address:</label>
+                                <input id="LoginEmail" type="email" class="form-input mt-3 rounded-md" name="email" placeholder="name@example.com">
+                            </div>
+
+                            <div class="mb-4 text-start">
+                                    <label class="font-semibold" for="LoginPassword">Password:</label>
+                                <input id="LoginPassword" type="password" class="form-input mt-3 rounded-md" name="password" placeholder="Password:">
+                            </div>
+
+                            <div class="flex justify-between mb-4">
+                                <div class="inline-flex items-center mb-0">
+                                    <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="RememberMe">
+                                    <label class="form-checkbox-label text-slate-400" for="RememberMe">Remember me</label>
+                                </div>
+                                <p class="text-slate-400 mb-0"><a href="reset-password.html" class="text-slate-400">Forgot password ?</a></p>
+                            </div>
+
+                            <div class="mb-4">
+                                <input type="submit" class="btn bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md w-full" value="Login / Sign in">
+                            </div>
+
+                            <div class="text-center">
+                                <span class="text-slate-400 me-2">Don't have an account ?</span> <a href="{% url 'login' %}" class="text-black dark:text-white font-bold">Sign Up</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

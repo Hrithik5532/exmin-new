@@ -1,0 +1,194 @@
+{% extends "client/template.html" %}
+{% load static %}
+
+{% block content %}
+<section class="py-36 flex items-center justify-center relative overflow-hidden">
+    <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-2 mx-auto justify-center">
+            <div class="relative overflow-hidden bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md">
+                <div class="p-6">
+                    <a href="#">
+                        <img src="../static/assets/images/EximLogo.png" class="mx-auto " alt="logo" style="height:30px;">
+                    </a>
+                    <h5 class="my-6 text-xl font-semibold">Signup</h5>
+
+                    <form id="registrationForm" class="text-start" action="{% url 'employer-register' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- Step 1 -->
+                        <div class="step" data-step="1">
+                            <div class="mb-4 text-start" style="display:flex">
+                                <div>
+                                    <label class="font-semibold" for="RegisterName">Company Name <span style="color:red">*</span>:</label>
+                                    <input id="RegisterName" type="text" name="company_name" class="form-input mt-3 rounded-md" placeholder="Reliance" required>
+                                </div>
+                                <div>
+                                    <label class="font-semibold" for="CompanyLogo">Company Logo:</label>
+                                    <input id="CompanyLogo" type="file" name="logo" class="form-input mt-3 rounded-md">
+                                </div>
+                            </div>
+                            <!-- Add other fields for Step 1 -->
+
+                            <button type="button" class="next-btn bg-blue-500 p-1 px-3 rounded-lg text-white">Next</button>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="step" data-step="2">
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="LoginEmail">Email Address<span style="color:red">*</span>:</label>
+                                <input id="LoginEmail" type="email" name="email" class="form-input mt-3 rounded-md" placeholder="name@example.com" required>
+                            </div>
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="OwnerName">Owner Name<span style="color:red">*</span>:</label>
+                                <input id="OwnerName" type="text" name="owner" class="form-input mt-3 rounded-md" placeholder="Mukesh Ambani" required>
+                            </div>
+                            <!-- Add other fields for Step 2 -->
+
+                            <button type="button" class="prev-btn bg-red-500 p-1 px-3 rounded-lg text-white">Previous</button>
+                            <button type="button" class="next-btn bg-blue-500 p-1 px-3 rounded-lg text-white">Next</button>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="step" data-step="3">
+                            <div class="mb-4">
+                                <label class="font-semibold" for="authorized_person">Authorized Person Name <span style="color:red">*</span>:</label>
+                                <input id="authorized_person" type="text" name="authorized_person" class="form-input mt-3 rounded-md" placeholder="Enter Authorized Person Name" required>
+                            </div>
+                            <div class="mb-4 flex flex-col">
+                                <label class="font-semibold" for="description">About Company<span style="color:red">*</span>:</label>
+                                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                            </div>
+                            <!-- Add other fields for Step 3 -->
+
+                            <button type="button" class="prev-btn bg-red-500 p-1 px-3 rounded-lg text-white">Previous</button>
+                            <button type="button" class="next-btn bg-blue-500 p-1 px-3 rounded-lg text-white">Next</button>
+                        </div>
+
+                        <!-- Step 4 (Moved Address Information Here) -->
+                        <div class="step" data-step="4">
+                            <div class="mb-4">
+                                <label class="font-semibold" for="address">Address<span style="color:red">*</span>:</label>
+                                <input id="address" type="text" name="address" class="form-input mt-3 rounded-md" placeholder="Enter Address" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="font-semibold" for="city">City<span style="color:red">*</span>:</label>
+                                <input id="city" type="text" name="city" class="form-input mt-3 rounded-md" placeholder="Enter City" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="font-semibold" for="state">State<span style="color:red">*</span>:</label>
+                                <input id="state" type="text" name="state" class="form-input mt-3 rounded-md" placeholder="Enter State" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="font-semibold" for="state">Pincode<span style="color:red">*</span>:</label>
+                                <input id="state" type="text" name="pincode" class="form-input mt-3 rounded-md" placeholder="xxx-xxx" required>
+                            </div>
+                            <button type="button" class="prev-btn bg-red-500 p-1 px-3 rounded-lg text-white">Previous</button>
+                            <button type="button" class="next-btn bg-blue-500 p-1 px-3 rounded-lg text-white">Next</button>
+                        </div>
+
+                        <!-- Step 5 (Moved Password Information Here) -->
+                        <div class="step" data-step="5">
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="LoginPassword">Password<span style="color:red">*</span>:</label>
+                                <input id="LoginPassword" type="password" class="form-input mt-3 rounded-md" placeholder="*****"required>
+                            </div>
+                            <div class="mb-4 text-start">
+                                <label class="font-semibold" for="ConfirmPassword">Confirm Password<span style="color:red">*</span>:</label>
+                                <input id="ConfirmPassword" type="password" class="form-input mt-3 rounded-md" placeholder="*****:"required>
+                            </div>
+                            <!-- Add other fields for Step 5 -->
+
+                            <button type="button" class="prev-btn bg-red-500 p-1 px-3 rounded-lg text-white">Previous</button>
+                            <input type="submit" class="btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 text-white rounded-md w-full" value="Register">
+                        </div>
+
+                        <!-- Step Navigation -->
+                        <div class="mb-4 step-nav">
+                            <span class="step-indicator">Step <span class="current-step">1</span> of 5</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="bg-white">
+                <img src="../static/assets/images/recruitment.png" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('registrationForm');
+        const steps = form.querySelectorAll('.step');
+        const stepNav = form.querySelector('.step-nav');
+        const nextBtns = form.querySelectorAll('.next-btn');
+        const prevBtns = form.querySelectorAll('.prev-btn');
+        const stepIndicator = stepNav.querySelector('.current-step');
+
+        let currentStep = 1;
+
+        function showStep(stepNumber) {
+            steps.forEach(step => {
+                step.style.display = 'none';
+            });
+
+            const currentStepElement = form.querySelector(`[data-step="${stepNumber}"]`);
+            if (currentStepElement) {
+                currentStepElement.style.display = 'block';
+                stepIndicator.textContent = stepNumber;
+            }
+        }
+
+        function updateStepIndicator() {
+            stepIndicator.textContent = currentStep;
+        }
+
+        function handleNextButtonClick() {
+            if (currentStep < steps.length) {
+                if (validateStep(currentStep)) {
+                    currentStep++;
+                    showStep(currentStep);
+                    updateStepIndicator();
+                }
+            }
+        }
+
+        function handlePrevButtonClick() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+                updateStepIndicator();
+            }
+        }
+
+        function validateStep(stepNumber) {
+            const currentStepElement = form.querySelector(`[data-step="${stepNumber}"]`);
+            const requiredFields = currentStepElement.querySelectorAll('[required]');
+
+            for (const field of requiredFields) {
+                if (!field.value.trim()) {
+                    alert(`Please fill in the required field`);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        nextBtns.forEach(btn => {
+            btn.addEventListener('click', handleNextButtonClick);
+        });
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener('click', handlePrevButtonClick);
+        });
+
+        showStep(currentStep);
+        updateStepIndicator();
+    });
+
+    CKEDITOR.replace('description');
+</script>
+
+
+{% endblock content %}

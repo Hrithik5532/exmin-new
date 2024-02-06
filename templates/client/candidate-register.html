@@ -424,12 +424,12 @@
                                             <div class=" px-3">
                                                 <label class="font-semibold">Fresher OR Experienced :* <span style="color:red">*</span>:</label>
                                             </div>
-                                            <div class="text-sm grid grid-cols-1 lg:grid-cols-2 items-center w-full gap-3 px-2">
-                                                <div class="flex justify-center items-center gap-2">
+                                            <div class="text-sm flex w-full gap-3 px-2">
+                                                <div class="flex   gap-2">
                                                     <input type="radio" id="import" name="experience" value="Fresher">
                                                     <label for="import">Fresher</label>
                                                 </div>
-                                                <div class="flex justify-center items-center gap-2">
+                                                <div class="flex  gap-2">
                                                     <input type="radio" id="export" name="experience" value="Experienced">
                                                     <label for="export">Experienced</label>
                                                 </div>
@@ -450,41 +450,130 @@
                                         </div>
                                     </div>
                                     <div style="display:none" id="experienceForm">
-                                         <div style="display:flex">
+                                         <div class="flex flex-col">
                                             <div>
 
                                                 <label class="fieldlabels">Total Experience in Exim Industry: </label>
-                                                <input type="number" min='0' name="exim_experience" placeholder="Total Experience in Exim Industry." />
+                                                {% comment %} <input type="number" min='0' name="exim_experience" placeholder="Total Experience in Exim Industry." /> {% endcomment %}
                                             </div>
-                                            <div>
-
-                                                <label class="fieldlabels">Total Experience in Exim Industry: </label>
-                                                <input type="number" min='0' name="exim_experience" placeholder="Total Experience in Exim Industry." />
+                                            <div class="text-sm grid lg:grid-cols-2  grid-cols-1 m-2 p-2">
+                                                <div class=" text-start">
+                                                    <label class="font-semibold md:invisible md:block hidden">Years</label>
+                                                    <div class="relative mt-1">
+                                                        
+                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="In years" name="experience">
+                                                    </div>
+                                                </div>
+        
+                                                <div class=" text-start">
+                                                    <label class="font-semibold md:invisible md:block hidden">Months</label>
+                                                    <div class="relative mt-1">
+                                                        
+                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="in months" name="experience">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <label class="fieldlabels">Total Yrs in Current Company: </label>
-                                        <input type="text" name="total_years_current_company" placeholder="Total Yrs in Current Company." />
-
+                                        <div class="flex flex-col">
+                                            <div>
+                                                <label class="fieldlabels">Total Yrs in Current Company: </label>
+                                            </div>
+                                            {% comment %} <input type="text" name="total_years_current_company" placeholder="Total Yrs in Current Company." /> {% endcomment %}
+                                            <div class="text-sm grid lg:grid-cols-2  grid-cols-1 m-2 p-2">
+                                                <div class=" text-start">
+                                                    <label class="font-semibold md:invisible md:block hidden">Years</label>
+                                                    <div class="relative mt-1">
+                                                        
+                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="In years" name="experience">
+                                                    </div>
+                                                </div>
+        
+                                                <div class=" text-start">
+                                                    <label class="font-semibold md:invisible md:block hidden">Months</label>
+                                                    <div class="relative mt-1">
+                                                        
+                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="in months" name="experience">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <label class="fieldlabels" >Last Employer: </label>
                                         <input type="text" name="last_employer" placeholder="Last Employer." />
+                                        div 
+                                        <label class="fieldlabels">Current Industry Type:</label>
+                                        <select name="current_industry" id="current_industry" class="form-select form-input border block w-full mt-1">
+                                            <option value="">Select</option>
+                                            {% for i in industry %}
+                                                <option value="{{i.id}}">{{i.name}}</option>
+                                            {% endfor %}
+                                        </select>
 
-                                        <label class="fieldlabels">Current Industry Type: </label>
-                                        <input type="text" name="current_industry_type" placeholder="Current Industry Type." />
+                                        <label class="fieldlabels">Functional Area:</label>
+                                        <select name="functional_area" id="functional_area" class="form-select form-input border block w-full mt-1">
+                                            <!-- Options will be populated dynamically based on the selected industry -->
+                                        </select>
+                                       
 
                                         <label class="fieldlabels">Current Position: </label>
-                                        <input type="text" name="current_position" placeholder="Current Position." />
-
-
-                                        <label class="fieldlabels">Functional Area: </label>
-                                        <input type="text" name="functional_area" placeholder="Functional Area." />
+                                        <select name="position" id="position" class="form-select form-input border block w-full" required="">
+                                            <option value="0">Select</option>
+                                            <option value="1" selected="">Assistant</option>
+                                            <option value="2">Asst. Management</option>
+                                            <option value="3">Jr. Executive</option>
+                                            <option value="4">Middle Management</option>
+                                            <option value="5">Office Boy</option>
+                                            <option value="6">Sr. Executive</option>
+                                            <option value="7">Sr. Management</option>
+                                            <option value="8">Others</option>                                             
+                                        </select>
                                         
-                                        <label class="fieldlabels">Operational Area (Import / Export): </label>
-                                        <input type="text" name="operational_area" placeholder="Operational Area (Import / Export)." />
                                         
-                                        <label class="fieldlabels">Import Shipment Expertise (Sea / Air): </label>
-                                        <input type="text" name="shipment_expertise" placeholder="Import Shipment Expertise (Sea / Air)." />
-                                        
+                                        <div class="mb-4 text-start grid grid-cols-1 lg:grid-cols-2 gap-2 " >
+                                            <div class="md:w-2/5 px-3 ">
+                                                <label class="font-semibold" for="RegisterName">Operational Area Expertise <span style="color:red">*</span>:</label>
+                                                
+                                            </div>
+                                            <div class="text-sm flex w-full  gap-3 px-2">
+                                                    <div class="flex  gap-2">
+                                                        <input type="radio" id="import" name="operational_area" value="Import">
+                                                        <label for="import">Import</label>
+                                                    </div>
+                                                    <div class="flex  gap-2">
+                                                        <input type="radio" id="export" name="operational_area" value="Export">
+                                                        <label for="export">Export</label>
+                                                    </div>
+                                                    <div class="flex  gap-2">
+                                                        <input type="radio" id="other" name="operational_area" value="Other">
+                                                        <label for="other">Other</label>
+                                                    </div>
+        
+                                            </div>
+                                            
+                                        </div>
+        
+                                        <div class="mb-4 text-start grid grid-cols-1 lg:grid-cols-2 gap-2" >
+                                            <div class="md:w-2/5 px-3 ">
+                                                <label class="font-semibold" for="RegisterName">Shipment Expertise <span style="color:red">*</span>:</label>
+                                                
+                                            </div>
+                                            <div class="text-sm flex w-full md:w-4/5 gap-3 px-2">
+                                                    <div class="flex  gap-2">
+                                                        <input type="radio" id="import" name="shipment_expertise" value="Sea">
+                                                        <label for="import">Sea</label>
+                                                    </div>
+                                                    <div class="flex  gap-2">
+                                                        <input type="radio" id="export" name="shipment_expertise" value="Air">
+                                                        <label for="air">Air</label>
+                                                    </div>
+                                                    <div class="flex  gap-2">
+                                                        <input type="radio" id="both" name="shipment_expertise" value="Both">
+                                                        <label for="both">Both</label>
+                                                    </div>
+        
+                                            </div>
+                                            
+                                        </div>
                                         <label class="fieldlabels">Current Monthly Salary: </label>
                                         <input type="number" min="0" name="current_salary" placeholder="Current Salary." />
                                     </div>
@@ -515,33 +604,16 @@
                             <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
 
                         </fieldset>
-                        {% comment %} <fieldset>
-                            <div class="form-card">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="fs-title">Finish:</h2>
-                                    </div>
-                                    <div class="col-5">
-                                        <h2 class="steps"></h2>
-                                    </div>
-                                </div> <br><br>
-                                <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                                <div class="row justify-content-center">
-                                    <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class=" fit-image"> </div> 
-                                </div> <br><br>
-                                <div class="row justify-content-center">
-                                    <div class="col-7 text-center">
-                                        <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset> {% endcomment %}
+                        
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    
+
 <script>
+    
 
     document.addEventListener("DOMContentLoaded", function() {
         var current_fs, next_fs, previous_fs; // fieldsets
@@ -782,4 +854,36 @@
     });
 </script>
 </section>
+
+<script>
+    document.getElementById('current_industry').addEventListener('change', function() {
+        var selectedIndustry = this.value;
+
+        // Make AJAX request to fetch data from the API
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://103.160.144.16/api-functionalArea/' + selectedIndustry, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+
+                    // Clear existing options in the Functional Area dropdown
+                    var functionalAreaDropdown = document.getElementById('functional_area');
+                    functionalAreaDropdown.innerHTML = '<option value="">Select</option>';
+
+                    // Populate options based on the fetched data
+                    for (var i = 0; i < data.length; i++) {
+                        var option = document.createElement('option');
+                        option.value = data[i].id;
+                        option.text = data[i].name;
+                        functionalAreaDropdown.appendChild(option);
+                    }
+                } else {
+                    console.error('Error fetching data:', xhr.statusText);
+                }
+            }
+        };
+        xhr.send();
+    });
+</script>
 {% endblock content %}

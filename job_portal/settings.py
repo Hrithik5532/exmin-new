@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'Authentication',
     'ckeditor',
     'Dashboard',
-    'taggit'
+    'taggit',
+    'rest_framework'
 ]
 AUTH_USER_MODEL = "Authentication.User"
 

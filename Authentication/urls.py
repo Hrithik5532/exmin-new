@@ -29,7 +29,8 @@ urlpatterns = [
     path('company-profile/(?P<slug>[-a-zA-Z0-9_]+)\\Z', employer_profile, name='company-profile'),
     
     path('employer-setting',employer_setting,name="employer-setting"),
-    path('all-companies',all_companies,name="all_companies")
+    path('all-companies',all_companies,name="all_companies"),
 
+    path('api-functionalArea/<int:pk>',fetchFunctionalArea)
 
 ]

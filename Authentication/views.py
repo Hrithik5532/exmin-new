@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
+from django.http import JsonResponse
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate, login,logout
 from django.contrib import messages
@@ -235,3 +236,11 @@ def all_companies(request):
     alphabet = sorted(companies, key=lambda x: x.company_name)
 
     return render(request, 'client/companies.html',{'title':'Profile Settings','companies':alphabet})
+
+
+from Dashboard.serializers import FunctionalAreaSerializer
+def fetchFunctionalArea(reques,pk):
+    industry = IndustryType.objects.get(id=pk)
+    funtional_area = FunctionalArea.objects.filter(industry=industry)
+    
+    return JsonResponse(FunctionalAreaSerializer(funtional_area,many=True).data,safe=False)

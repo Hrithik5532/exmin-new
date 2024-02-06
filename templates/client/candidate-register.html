@@ -500,14 +500,19 @@
                                         </div>
                                         <label class="fieldlabels" >Last Employer: </label>
                                         <input type="text" name="last_employer" placeholder="Last Employer." />
-                                        div 
-                                        <label class="fieldlabels">Current Industry Type:</label>
-                                        <select name="current_industry" id="current_industry" class="form-select form-input border block w-full mt-1">
-                                            <option value="">Select</option>
-                                            {% for i in industry %}
-                                                <option value="{{i.id}}">{{i.name}}</option>
-                                            {% endfor %}
-                                        </select>
+                                
+                                        <div class="text-sm md:flex block w-full md:w-4/5 gap-2" id="skillsContainer">
+                                            <label class="fieldlabels">Current Industry Type:</label>
+                                            <select id="current_industry_dropdown" class="form-select form-input border block w-full mt-1">
+                                                <option value="">Select</option>
+                                                {% for i in industry %}
+                                                    <option value="{{i.id}}">{{i.name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <button id="addSkill" type="button" class="btn bg-blue-900 text-white" onclick="addNewIndustry()">Add</button>
+                                            <!-- Readonly input to store added skills -->
+                                            <input type="hidden" class="bg-blue-300 text-blue-900 rounded-full p-2 m-2" id="current_industry" name="current_industry" readonly>
+                                        </div>
 
                                         <label class="fieldlabels">Functional Area:</label>
                                         <select name="functional_area" id="functional_area" class="form-select form-input border block w-full mt-1">
@@ -886,4 +891,39 @@
         xhr.send();
     });
 </script>
+
+
+
+<script>
+    function addNewIndustry() {
+        var dropdown = document.getElementById('current_industry_dropdown');
+        var hiddenInput = document.getElementById('current_industry');
+        var selectedIndustry = dropdown.options[dropdown.selectedIndex].text;
+        var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+    
+        // Prevent adding if the select option or empty value is selected
+        if (!selectedValue) {
+            alert("Please select an industry.");
+            return;
+        }
+    
+        // Split existing values into an array
+        var existingValues = hiddenInput.value ? hiddenInput.value.split(', ') : [];
+    
+        // Check if already two industries are added
+        if (existingValues.length >= 2) {
+            alert("You can add a maximum of 2 industries.");
+        } else {
+            // Add the selected industry if it's not already added
+            if (!existingValues.includes(selectedIndustry)) {
+                existingValues.push(selectedIndustry);
+                hiddenInput.value = existingValues.join(', ');
+            } else {
+                alert("This industry is already added.");
+            }
+        }
+    }
+    </script>
+
+
 {% endblock content %}

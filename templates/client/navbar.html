@@ -41,7 +41,7 @@
                         {% if request.user.is_authenticated %}
                         {% if request.user.account_type == 'Employer' %}
                         <li>
-                            <a href="{% url 'employer-profile' %}" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="user" class="size-4 me-2"></i>Profile</a>
+                            <a href="" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="user" class="size-4 me-2"></i>Profile</a>
                         </li>
                         {% else %}
                         <li>
@@ -58,10 +58,10 @@
                         </li>
                         {% else %}
                         <li>
-                            <a href="{%url 'signin'%}" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="log-in" class="size-4 me-2"></i>Login</a>
+                            <button id="open-modal-button" onclick="toggleModal()" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="log-in" class="size-4 me-2"></i>Login</button>
                         </li>
                         <li>
-                            <a href="{%url 'login'%}" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="user-plus" class="size-4 me-2"></i>Register</a>
+                            <a href="{%url 'loginx'%}" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="user-plus" class="size-4 me-2"></i>Register</a>
                         </li>
                         {% endif %}
                         
@@ -89,6 +89,8 @@
                         
                     </ul >  
                 </li> {% endcomment %}
+                <li><a href="{%url 'home'%}" class="sub-menu-item">Home</a></li>
+
                 {% if request.user.account_type == 'Employer' %}
                 
                 <li><a href="{%url 'candidate-list'%}" class="sub-menu-item">Candidate List</a></li>

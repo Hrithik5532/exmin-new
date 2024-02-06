@@ -43,7 +43,8 @@ class IndustryType(models.Model):
         return self.name
 
 class FunctionalArea(models.Model):
-    name = models.CharField(unique=True,max_length=200)
+    industry = models.ForeignKey(IndustryType,on_delete=models.CASCADE,blank=True, null=True)
+    name = models.CharField(max_length=200)
     def __str__(self) :
         return self.name
     

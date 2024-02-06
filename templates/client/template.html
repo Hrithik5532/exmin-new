@@ -28,8 +28,10 @@
         <link href="../../static/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
         <link href="../../static/assets/css/bg-color.css" rel="stylesheet" type="text/css">
         <link href="../../static/assets/css/padding-margin.css" rel="stylesheet" type="text/css">
+        
           <!-- CKEditor script from CDN -->
           <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/unirest@0.6.0/dist/browser/unirest.min.js"></script>
 
 
     </head>
@@ -40,8 +42,51 @@
 
     {% endblock content %}
 
+
+    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+      <div class="flex items-center justify-center w-screen min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0" style="background:rgba(0,0,0,0.5)">
+        
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+        <div class="inline-flex flex-col justify-center bg-transparent h-screen  text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+          <div class="bg-white shadow-xl rounded-lg  px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <a href="#">
+                  <img src="../static/assets/images/EximLogo.png" class="mx-auto  flex" alt="" style="height:30px;">
+              </a>
+              <h5 class="my-6 text-xl font-semibold">Login</h5>
+              <form class="text-start" action="{% url 'signin' %}" method="POST">
+                  {% csrf_token %}
+                  <label for="LoginEmail" class="font-medium text-gray-800">Email</label>
+                  <input type="email" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" name="email" placeholder="name@example.com"/>
+                  <label class="font-medium text-gray-800" for="LoginPassword">Password</label>
+                  <input type="password" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" name="password" placeholder="Password:"/>
+                  <div class="flex justify-between mb-4">
+                      <div class="inline-flex items-center mb-0">
+                          <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="RememberMe">
+                          <label class="form-checkbox-label text-slate-400" for="RememberMe">Remember me</label>
+                      </div>
+                      <p class="text-slate-400 mb-0"><a href="reset-password.html" class="text-slate-400">Forgot password ?</a></p>
+                  </div>
+                  <div class="bg-gray-200 px-4 py-3 text-center rounded-lg">
+                    <button type="button" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2" onclick="toggleModal()"><i class="fas fa-times"></i> Cancel</button>
+                    <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded font-medium hover:bg-blue-700 mr-2 transition duration-500"><i class="fas fa-plus"></i> Submit</button>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+
     {% include 'client/footer.html'%}
 
+
+    <script>
+      function toggleModal() { document.getElementById('modal').classList.toggle('hidden')
+  }
+         
+    </script>
     
     {% for message in messages %}
     {% if message.tags == 'success' %}

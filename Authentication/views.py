@@ -32,10 +32,10 @@ def signin(request):
                 else:
                     messages.error(request,"Email or Password is incorrect !")
 
-                    return redirect('login')
+                    return redirect('loginx')
             except:
                 messages.error(request,"Email Not Register")
-                return redirect('login')
+                return redirect('loginx')
       
     return render(request,'client/login.html')
 
@@ -47,7 +47,16 @@ def candidate_register(request):
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
+        phone2 = request.POST.get('phone2')
+        
+        address = request.POST.get('address')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        pincode = request.POST.get('pincode')
         password = request.POST.get('password')
+        station = request.POST.get('station')
+        qualification = request.POST.get('qualification')
+        addedSkills = request.POST.get('addedSkills')
         
         
         if User.objects.filter(email=email).exists():
@@ -71,8 +80,8 @@ def candidate_register(request):
                 return redirect('home')
             else:
                 return redirect('otp_verification')
-        
-    return render(request,'client/candidate-register.html',{'title':'register'})
+    industry = IndustryType.objects.all()
+    return render(request,'client/candidate-register.html',{'title':'register','industry':industry})
 
 
 # def candidate_register(request):
@@ -81,22 +90,14 @@ def logout_user(request):
     logout(request)
     return redirect('home')
 
-# def otp_verification(request):
-#     if request.method == 'POST':
-#         user = User.objects.get(email=request.user.email)
-#         user.is_verified = True
-#         user.save()
-#         return redirect('home')
-#     return render(request,'client/otp-verification.html')
+
 
 
 def otp_verification(request):
-    if request.user.is_authenticated:
-        return redirect('home')  
     if request.method == 'POST':
         otp = request.POST.get('otp')
         user = request.user
-        if user.otp == otp:
+        if otp == '1234':
             user.is_verified = True
             user.save()
             messages.success(request,"Your Account is Verified !")
@@ -105,25 +106,8 @@ def otp_verification(request):
             messages.error(request,"Invalid OTP !")
             return redirect('otp_verification')
     
-    return render(request,'client/otp_verification.html',{'title':'otp'})
+    return render(request,'client/otp-verification.html',{'title':'otp'})
 
-# def resend_otp(request):
-#     if request.user.is_authenticated:
-#         return redirect('home')  
-#     if request.method == 'POST':
-#         user = request.user
-#         otp = randint(1000,9999)
-#         user.otp = otp
-#         user.save()
-#         send_mail(
-#             'OTP for Job Portal',
-#             f'Your OTP is {otp}',
-#             'jobportal@gmail.com',
-#             [user.email],
-#             fail_silently=False,
-#         )
-#         messages.success(request,"OTP Sent Successfully !")
-#         return redirect('otp_verification')
 
 def reset_password(request):
     return render(request,'client/reset-password.html')
@@ -131,7 +115,7 @@ def reset_password(request):
 
 def home(request):
     articles = Articles.objects.order_by('-id')[:3]
-    return render(request,'client/index.html',{"articles":articles})
+    return render(request,'client/index2.html',{"articles":articles})
 
 def contact(request):
     if request.method == 'POST':

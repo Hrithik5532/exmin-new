@@ -33,11 +33,16 @@
         transform: rotate(-45deg);
     }
 </style>
+
+
 <section class="min-h-screen mt-16 flex items-center justify-center relative overflow-hidden bg-[url('https://shreethemes.in/Eximjobs/layouts/../static/assets/images/hero/bg3.jpg')] bg-no-repeat bg-center bg-cover">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
     <div class="container">
-       
-        <h5 class="my-6 text-xl font-semibold" style="    text-align: center;">Already Register !! <a style="color:green" href="{% url 'signin' %}">Sign In</a> </h5>
+        <h5 class="my-6 text-xl font-semibold " style="text-align: center;">Already Register !! 
+            <div class="shrink-0">
+                <button id="open-modal-button" onclick="toggleModal()" class="w-64 h-12 text-lg text-white bg-blue-500 rounded-md px-4 py-2">Sign In</button>
+              </div>
+         </h5>
 
         <div class="grid md:grid-cols-2 grid-cols-1">
             <div class="relative overflow-hidden bg-white dark:bg-slate-900 border dark:shadow-gray-800 rounded-2xl">
@@ -55,7 +60,7 @@
                 </div>
 
             </div>
-            <div class="Orclass hidden md:block">
+            <div class="Orclass hidden ">
                 <p class="text-white font-bold text-lg">OR</p>
             </div>
             <div class="relative overflow-hidden bg-white dark:bg-slate-900 border dark:shadow-gray-800 rounded-2xl">
@@ -78,6 +83,8 @@
             
         </div>
     </div>
+    
+    
 </section>
 
 {% endblock content %}

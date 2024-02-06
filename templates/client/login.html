@@ -4,10 +4,10 @@
 
 {% block content %}
 
-<section class="h-screen flex items-center justify-center relative overflow-hidden bg-no-repeat bg-center bg-cover" style="background-image: url('https://images.pexels.com/photos/1181421/pexels-photo-1181421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+<section class="h-screen flex items-center justify-center relative overflow-hidden bg-blue-100">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
     <div class="container">
-        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+        <div class="flex justify-center">
             <div class="relative overflow-hidden bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md">
                 <div class="p-6">
                     <a href="#">
@@ -40,7 +40,7 @@
                             </div>
 
                             <div class="text-center">
-                                <span class="text-slate-400 me-2">Don't have an account ?</span> <a href="{% url 'login' %}" class="text-black dark:text-white font-bold">Sign Up</a>
+                                <span class="text-slate-400 me-2">Don't have an account ?</span> <a href="{% url 'loginx' %}" class="text-black dark:text-white font-bold">Sign Up</a>
                             </div>
                         </div>
                     </form>

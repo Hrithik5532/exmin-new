@@ -20,7 +20,7 @@ urlpatterns = [
     
     
     path('wishlist',wishlist,name="wishlist"),
-    path('loginx',loginpage,name="login"),
+    path('loginx',loginpage,name="loginx"),
 
     path('employer-register',employer_register,name="employer-register"),
     path('candidate-register',candidate_register,name="candidate-register"),

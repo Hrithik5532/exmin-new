@@ -3,8 +3,9 @@
 
 {% block content %}
         <!-- Start Hero -->
-        <section class="relative table w-full py-36 bg-[url('../../static/assets/images/hero/bg.html')] bg-top bg-no-repeat bg-cover">
-            <div class="absolute inset-0 bg-emerald-900/90"></div>
+        <section class="relative table w-full py-36 bg-top bg-blue-200" >
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+
             <div class="container">
                 <div class="grid grid-cols-1 text-center mt-10">
                     <h3 class="md:text-3xl text-2xl md:leading-snug tracking-wide leading-snug font-medium text-white">Companies
@@ -31,37 +32,114 @@
 
          <!-- Start -->
          <section class="relative md:py-24 py-16">
-            <div class="container">
 
+            <div class="container z-1">
+                <div class="d-flex" id="reserve-form">
+                    <div class="md:w-5/6 mx-auto">
+                        <div class="lg:col-span-10">
+                            <div class="bg-white dark:bg-slate-900 border-0 shadow rounded-md p-3">
+                                <form action="#">
+                                    <div class="registration-form text-dark text-start">
+                                        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
+                                            <div class="filter-search-form relative filter-border">
+                                                <i class="uil uil-briefcase-alt icons"></i>
+                                                <input name="name" type="text" id="job-keyword" class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" placeholder="Search your Keywords">
+                                            </div>
 
-                    <div class="grid lg:grid-cols-4 grid-cols-1 gap-6 mt-6">
+                                            <div class="filter-search-form relative filter-border">
+                                                <i class="uil uil-map-marker icons"></i>
+                                                <div class="choices" data-type="select-one" tabindex="0" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false"><div class="choices__inner"><select class="form-select choices__input" data-trigger="" name="choices-location" id="choices-location" aria-label="Default select example" hidden="" tabindex="-1" data-choice="active"><option value="AF" data-custom-properties="[object Object]">Afghanistan</option></select><div class="choices__list choices__list--single"><div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="AF" data-custom-properties="[object Object]" aria-selected="true">Afghanistan</div></div></div><div class="choices__list choices__list--dropdown" aria-expanded="false"><input type="search" name="search_terms" class="choices__input choices__input--cloned" autocomplete="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" aria-label="null" placeholder=""><div class="choices__list" role="listbox"><div id="choices--choices-location-item-choice-1" class="choices__item choices__item--choice is-selected choices__item--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="AF" data-select-text="Press to select" data-choice-selectable="" aria-selected="true">Afghanistan</div><div id="choices--choices-location-item-choice-2" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="2" data-value="AZ" data-select-text="Press to select" data-choice-selectable="">Azerbaijan</div><div id="choices--choices-location-item-choice-3" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="3" data-value="BS" data-select-text="Press to select" data-choice-selectable="">Bahamas</div><div id="choices--choices-location-item-choice-4" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="4" data-value="BH" data-select-text="Press to select" data-choice-selectable="">Bahrain</div><div id="choices--choices-location-item-choice-5" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="5" data-value="CA" data-select-text="Press to select" data-choice-selectable="">Canada</div><div id="choices--choices-location-item-choice-6" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="6" data-value="CV" data-select-text="Press to select" data-choice-selectable="">Cape Verde</div><div id="choices--choices-location-item-choice-7" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="7" data-value="DK" data-select-text="Press to select" data-choice-selectable="">Denmark</div><div id="choices--choices-location-item-choice-8" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="8" data-value="DJ" data-select-text="Press to select" data-choice-selectable="">Djibouti</div><div id="choices--choices-location-item-choice-9" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="9" data-value="ER" data-select-text="Press to select" data-choice-selectable="">Eritrea</div><div id="choices--choices-location-item-choice-10" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="10" data-value="EE" data-select-text="Press to select" data-choice-selectable="">Estonia</div><div id="choices--choices-location-item-choice-11" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="11" data-value="GM" data-select-text="Press to select" data-choice-selectable="">Gambia</div></div></div></div>
+                                            </div>
+                                        
+                                            <div class="filter-search-form relative filter-border">
+                                                <i class="uil uil-briefcase-alt icons"></i>
+                                                <div class="choices" data-type="select-one" tabindex="0" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false"><div class="choices__inner"><select class="form-select choices__input" data-trigger="" name="choices-type" id="choices-type" aria-label="Default select example" hidden="" tabindex="-1" data-choice="active"><option value="1" data-custom-properties="[object Object]">Full Time</option></select><div class="choices__list choices__list--single"><div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="1" data-custom-properties="[object Object]" aria-selected="true">Full Time</div></div></div><div class="choices__list choices__list--dropdown" aria-expanded="false"><input type="search" name="search_terms" class="choices__input choices__input--cloned" autocomplete="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" aria-label="null" placeholder=""><div class="choices__list" role="listbox"><div id="choices--choices-type-item-choice-1" class="choices__item choices__item--choice choices__item--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="3" data-select-text="Press to select" data-choice-selectable="" aria-selected="true">Freelancer</div><div id="choices--choices-type-item-choice-2" class="choices__item choices__item--choice is-selected choices__item--selectable" role="option" data-choice="" data-id="2" data-value="1" data-select-text="Press to select" data-choice-selectable="">Full Time</div><div id="choices--choices-type-item-choice-3" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="3" data-value="5" data-select-text="Press to select" data-choice-selectable="">Office Work</div><div id="choices--choices-type-item-choice-4" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="4" data-value="2" data-select-text="Press to select" data-choice-selectable="">Part Time</div><div id="choices--choices-type-item-choice-5" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="5" data-value="4" data-select-text="Press to select" data-choice-selectable="">Remote Work</div></div></div></div>
+                                            </div>
 
-                        {% for i in companies %}
-                        
-                        <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                            
-                            <a href="{% url 'company-profile' i.company_name %}">
-
-                                <div class="flex items-center p-6 border-t border-gray-100 dark:border-gray-700">
-                                    <img src="../../media/{{i.company_logo}}" class="size-12 shadow-md dark:shadow-gray-800 rounded-md p-2 bg-white dark:bg-slate-900" alt="">
-                                    
-                                    <div class="ms-3">
-                                        <h6 class="mb-0 font-semibold text-base">{{i.company_name}}</h6>
-                                        <span class="text-slate-400 text-sm">{{i.user.state}}</span>
-                                    </div>
-                                </div>
-                            </a> 
-                        </div><!--end content-->
-                        {% endfor %}
-
+                                            <input type="submit" id="search" name="search" style="height: 60px;" class="btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 text-white searchbtn submit-btn w-100" value="Search">
+                                        </div><!--end grid-->
+                                    </div><!--end container-->
+                                </form>
+                            </div>
+                        </div><!--ed col-->
                     </div>
+                </div><!--end grid-->
+            </div>
+            
+            <div class="container mt-10">
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-[30px]">
+
+                    {% for i in companies %}
+                    <div class="group p-6 rounded-lg border border-emerald-600/20 dark:border-emerald-600/40 bg-white dark:bg-slate-900 hover:bg-emerald-600/[0.02] hover:dark:bg-emerald-600/5 hover:shadow-md hover:shadow-emerald-600/5 transition-all duration-500">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="size-14 flex items-center justify-center bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full mb-2">
+                                    <img src="../../media/{{i.company_logo}}" class="size-8" alt="">
+                                </div>
+                                <a href="{% url 'company-profile' i.company_name %}" class="text-lg hover:text-emerald-600 font-semibold transition-all duration-500">{{i.company_name}}</a>
+                            </div>
+
+                            <div class="flex items-center">
+                                {% comment %} <a href="javascript:void(0)" class="text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600 text-2xl"><i class="mdi mdi-heart"></i></a> {% endcomment %}
+                                <a href="#" class="btn btn-icon rounded-full bg-emerald-600/5 hover:bg-emerald-600 border-emerald-600/10 hover:border-emerald-600 text-emerald-600 hover:text-white ms-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark size-4"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></a>
+                                <a href="{% url 'company-profile' i.company_name %}" class="btn btn-icon rounded-full bg-emerald-600/5 group-hover:bg-emerald-600 border-emerald-600/10 text-emerald-600 group-hover:text-white ms-1"><i class="uil uil-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            
+                            <div class="mt-3">
+                                <div class='flex' style="justify-content:space-between;">
+                                    <p class="text-slate-900 font-bold mt-2">{{i.owner}} </p>
+                                    <p class="text-slate-400 mt-2">{{i.website}} </p>
+                                </div>
+                                <a href="#">
+                                    <span class="text-xs p-2 bg-emerald-600/5 hover:bg-emerald-600/20 dark:bg-emerald-600/10 hover:dark:bg-emerald-600/30 inline-block text-emerald-600 px-4 text-[14px] font-medium rounded-full mt-2 transition-all duration-500"><i class="uil uil-map-marker"></i>{{i.user.city}}, {{i.user.state}}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div><!--end content-->
 
                     
+                    {% endfor %}
                     
-                    <!--end content-->
-                
-          
-            </div><!--end container-->
+                </div><!--end grid-->
+
+                <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
+                    <div class="md:col-span-12 text-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="inline-flex items-center -space-x-px">
+                                <li>
+                                    <a href="#" class="size-[40px] inline-flex justify-center items-center text-slate-400 bg-white dark:bg-slate-900 rounded-s-3xl hover:text-white border border-gray-100 dark:border-gray-800 hover:border-emerald-600 dark:hover:border-emerald-600 hover:bg-emerald-600 dark:hover:bg-emerald-600">
+                                        <i class="uil uil-angle-left text-[20px] rtl:rotate-180 rtl:-mt-1"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="size-[40px] inline-flex justify-center items-center text-slate-400 hover:text-white bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:border-emerald-600 dark:hover:border-emerald-600 hover:bg-emerald-600 dark:hover:bg-emerald-600">1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="size-[40px] inline-flex justify-center items-center text-slate-400 hover:text-white bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:border-emerald-600 dark:hover:border-emerald-600 hover:bg-emerald-600 dark:hover:bg-emerald-600">2</a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-current="page" class="z-10 size-[40px] inline-flex justify-center items-center text-white bg-emerald-600 border border-emerald-600">3</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="size-[40px] inline-flex justify-center items-center text-slate-400 hover:text-white bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:border-emerald-600 dark:hover:border-emerald-600 hover:bg-emerald-600 dark:hover:bg-emerald-600">4</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="size-[40px] inline-flex justify-center items-center text-slate-400 hover:text-white bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:border-emerald-600 dark:hover:border-emerald-600 hover:bg-emerald-600 dark:hover:bg-emerald-600">5</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="size-[40px] inline-flex justify-center items-center text-slate-400 bg-white dark:bg-slate-900 rounded-e-3xl hover:text-white border border-gray-100 dark:border-gray-800 hover:border-emerald-600 dark:hover:border-emerald-600 hover:bg-emerald-600 dark:hover:bg-emerald-600">
+                                        <i class="uil uil-angle-right text-[20px] rtl:rotate-180 rtl:-mt-1"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!--end col-->
+                </div><!--end grid-->
+            </div>
+           
         </section><!--end section-->
         <!-- End -->
 

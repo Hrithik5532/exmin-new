@@ -43,8 +43,8 @@ class Recruiter(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     company_name = models.TextField(null=True, blank=True)
     owner =  models.TextField(null=True, blank=True)
-    employess =  models.TextField(null=True, blank=True)
-    wesbsite =  models.URLField(null=True, blank=True)
+    employees =  models.TextField(null=True, blank=True)
+    website =  models.URLField(null=True, blank=True)
     company_logo =  models.ImageField(upload_to='company-logo/')
     authorized_person=models.TextField(null=True, blank=True)
     description = RichTextField(null=True, blank=True)
@@ -54,7 +54,7 @@ class Recruiter(models.Model):
     instagram =  models.URLField(null=True, blank=True)
     twitter =  models.URLField(null=True, blank=True)
 
-    map_location = models.URLField(null=True, blank=True)
+    map_location = models.TextField(null=True, blank=True)
     
     def __str__(self):
         return str(self.company_name)

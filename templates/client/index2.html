@@ -26,7 +26,7 @@
             <!-- <iframe src="https://www.youtube.com/embed/JsNvHJsufhI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" class="absolute top-1/2 start-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2  -translate-y-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.77vw]"></iframe> -->
             <!--Note: Youtube Embed Background Video-->
         </div>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+        <div class="absolute inset-0 "style="background:rgb(23 37 84 / 0.6)!important"></div>
         
         <div class="container z-1">
             <div class="flex"> 
@@ -45,12 +45,12 @@
                 </div> {% endcomment %}
             </div>
             <div class="d-flex" id="reserve-form">
-                <div class="md:w-5/6 mx-auto">
+                <div class="md:w-11/12 mx-auto">
                     <div class="lg:col-span-10 mt-8">
                         <div class="bg-white dark:bg-slate-900 border-0 shadow rounded-md p-3">
                             <form action="#">
                                 <div class="registration-form text-dark text-start">
-                                    <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
+                                    <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 lg:gap-0 gap-6">
                                         <div class="filter-search-form relative filter-border">
                                             <i class="uil uil-briefcase-alt icons"></i>
                                             <input name="name" type="text" id="job-keyword" class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" placeholder="Search Job By Industry">
@@ -69,7 +69,17 @@
                                                 
                                             </select>
                                         </div>
-                                    
+                                        <div class="filter-search-form relative filter-border rounded-lg">
+                                            <i class="uil uil-briefcase-alt icons"></i>
+                                            <select class="form-select form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" name="exp">
+                                                <option value="">Experience</option>
+                                                <option value="0-3">0-3 years</option>
+                                                <option value="3-5">3-5 years</option>
+                                                <option value="5-10">5-10 years</option>
+                                                <option value="10-100">More than 10 years</option>
+                                              </select>
+                                        </div>
+      
                                         <div class="filter-search-form relative filter-border rounded-lg">
                                             <i class="uil uil-briefcase-alt icons"></i>
                                             <select class="form-select form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" name="salary">
@@ -87,11 +97,53 @@
                                                 <option value="100000-10000000">Above 1 Lakh</option>
                                             </select>
                                         </div>
-                                        
                                         <button type="submit" id="search" name="search" style="height: 60px;" class="btn rounded-lg bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white searchbtn submit-btn w-100" >Search</button>
                                     </div><!--end grid-->
+                                    <div id="advanced-search-fields" class="hidden flex" >
+                                        <input type="text" name="min_salary" placeholder="Min Salary" class="form-input">
+                                        <input type="text" name="max_salary" placeholder="Max Salary" class="form-input">
+                                        <input type="text" name="experience" placeholder="Experience in Industry" class="form-input">
+                                        <input type="text" name="position" placeholder="Position" class="form-input">
+                                        <select name="city" class="form-select">
+                                            <!-- City options -->
+                                        </select>
+                                        <input type="text" name="industry_type" placeholder="Industry Type" class="form-input">
+                                        <input type="text" name="functional_area" placeholder="Functional Area" class="form-input">
+                                    </div>
                                 </div><!--end container-->
                             </form>
+
+                            {% comment %} <form action="#">
+                                <div class="registration-form text-dark text-start">
+                                    <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 lg:gap-0 gap-6">
+                                        <!-- Existing fields -->
+                                        <div class="filter-search-form relative filter-border">
+                                            <i class="uil uil-briefcase-alt icons"></i>
+                                            <input name="name" type="text" id="job-keyword" class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" placeholder="Search Job By Industry">
+                                        </div>
+                                        <!-- Other existing fields... -->
+                                        <button type="submit" id="search" name="search" style="height: 60px;" class="btn rounded-lg bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white searchbtn submit-btn w-100">Search</button>
+                                    </div>
+                                    
+                                    <!-- Advanced Search Fields (Initially Hidden) -->
+                                    
+                                </div>
+                            </form> {% endcomment %}
+                            <!-- Toggle Button -->
+                        </div>
+                        <div class="text-end">
+                            <button type="button" id="toggle-advanced-search" class=" text-white ">Advanced Search</button>
+                            <script>
+                                document.getElementById('toggle-advanced-search').addEventListener('click', function() {
+                                    var advancedFields = document.getElementById('advanced-search-fields');
+                                    if (advancedFields.classList.contains('hidden')) {
+                                        advancedFields.classList.remove('hidden');
+                                    } else {
+                                        advancedFields.classList.add('hidden');
+                                    }
+                                });
+                                
+                            </script>
                         </div>
                     </div><!--ed col-->
                 </div>
@@ -102,6 +154,7 @@
     </section><!--end section-->
     <!-- End Hero -->
 
+   
     
 
     <!-- Start -->
@@ -109,9 +162,9 @@
        
         <div class="container">
             <div class="grid grid-cols-1 pb-8 text-center">
-                <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Popular Jobs</h3>
+                <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">RECENT JOBS</h3>
 
-                <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+                <p class="text-slate-400 max-w-xl mx-auto">Discover countless opportunities in the dynamic realm of Exim (Export-Import) jobs. Explore a myriad of open positions tailored to your skills and interests. Gain insights into salary estimates customized to your expertise.</p>
             </div><!--end grid-->
 
             <div class="grid lg:grid-cols-3 md:grid-cols-2 mt-8 gap-[30px]">
@@ -123,7 +176,7 @@
                             </div>
 
                             <div class="ms-3">
-                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Facebook</a>
+                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Freight Forwarding</a>
                                 <span class="block text-sm text-slate-400">2 days ago</span>
                             </div>
                         </div>
@@ -132,8 +185,8 @@
                     </div>
 
                     <div class="mt-6">
-                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Web Designer / Developer</a>
-                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> Australia</h6>
+                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Sr. Executive </a>
+                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> Mumbai</h6>
                     </div>
 
                     <div class="mt-6">
@@ -141,7 +194,7 @@
                             <div class="bg-blue-600 h-[6px] rounded-full" style="width: 55%"></div>
                         </div>
                         <div class="mt-2">
-                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">21 applied</span> of 40 vacancy</span>
+                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">40 % </span> matching strength</span>
                         </div>
                     </div>
                 </div><!--end content-->
@@ -154,7 +207,7 @@
                             </div>
 
                             <div class="ms-3">
-                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Google</a>
+                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Merchant Exporters Importers</a>
                                 <span class="block text-sm text-slate-400">2 days ago</span>
                             </div>
                         </div>
@@ -163,8 +216,8 @@
                     </div>
 
                     <div class="mt-6">
-                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Marketing Director</a>
-                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> USA</h6>
+                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Sr. Management </a>
+                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> Wadala RTO</h6>
                     </div>
 
                     <div class="mt-6">
@@ -172,7 +225,7 @@
                             <div class="bg-blue-600 h-[6px] rounded-full" style="width: 55%"></div>
                         </div>
                         <div class="mt-2">
-                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">21 applied</span> of 40 vacancy</span>
+                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">35 %</span> matching strength</span>
                         </div>
                     </div>
                 </div><!--end content-->
@@ -185,7 +238,7 @@
                             </div>
 
                             <div class="ms-3">
-                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Android</a>
+                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Custom House Agent (Custom Broker)</a>
                                 <span class="block text-sm text-slate-400">2 days ago</span>
                             </div>
                         </div>
@@ -194,8 +247,8 @@
                     </div>
 
                     <div class="mt-6">
-                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Application Developer</a>
-                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> China</h6>
+                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Assistant </a>
+                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> Pune</h6>
                     </div>
 
                     <div class="mt-6">
@@ -203,7 +256,7 @@
                             <div class="bg-blue-600 h-[6px] rounded-full" style="width: 55%"></div>
                         </div>
                         <div class="mt-2">
-                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">21 applied</span> of 40 vacancy</span>
+                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">60 %</span> matching strenth</span>
                         </div>
                     </div>
                 </div><!--end content-->
@@ -216,7 +269,7 @@
                             </div>
 
                             <div class="ms-3">
-                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Lenovo</a>
+                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">DGFT Licensing, Exim Operation</a>
                                 <span class="block text-sm text-slate-400">2 days ago</span>
                             </div>
                         </div>
@@ -226,7 +279,7 @@
 
                     <div class="mt-6">
                         <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Senior Product Designer</a>
-                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> Dubai</h6>
+                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> Belapur, Mumbai</h6>
                     </div>
 
                     <div class="mt-6">
@@ -234,7 +287,7 @@
                             <div class="bg-blue-600 h-[6px] rounded-full" style="width: 55%"></div>
                         </div>
                         <div class="mt-2">
-                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">21 applied</span> of 40 vacancy</span>
+                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">60% </span> match</span>
                         </div>
                     </div>
                 </div><!--end content-->
@@ -243,68 +296,70 @@
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <div class="size-14 flex items-center justify-center bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
-                                <img src="../../static/../static/assets/images/company/spotify.png" class="size-8"  alt="">
+                                <img src="../../static/assets/images/company/linkedin.png" class="size-8"  alt="">
                             </div>
-
+                
                             <div class="ms-3">
-                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Spotify</a>
-                                <span class="block text-sm text-slate-400">2 days ago</span>
+                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Logistics Coordinator</a>
+                                <span class="block text-sm text-slate-400">3 days ago</span>
                             </div>
                         </div>
-
+                
                         <span class="bg-blue-600/10 group-hover:bg-blue-600 inline-block text-blue-600 group-hover:text-white text-xs px-2.5 py-0.5 font-semibold rounded-full transition-all duration-500">Full Time</span>
                     </div>
-
+                
                     <div class="mt-6">
-                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">C++ Developer</a>
-                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> India</h6>
+                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Import/Export Specialist</a>
+                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> New Delhi</h6>
                     </div>
-
+                
                     <div class="mt-6">
                         <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-[6px]">
-                            <div class="bg-blue-600 h-[6px] rounded-full" style="width: 55%"></div>
+                            <div class="bg-blue-600 h-[6px] rounded-full" style="width: 65%"></div>
                         </div>
                         <div class="mt-2">
-                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">21 applied</span> of 40 vacancy</span>
+                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">70 % </span> match</span>
                         </div>
                     </div>
                 </div><!--end content-->
-
+                
                 <div class="group shadow dark:shadow-gray-700 p-6 rounded-md bg-white dark:bg-slate-900">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <div class="size-14 flex items-center justify-center bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
-                                <img src="../../static/../static/assets/images/company/linkedin.png" class="size-8"  alt="">
+                                <img src="../../static/assets/images/company/spotify.png.png" class="size-8"  alt="">
                             </div>
-
+                
                             <div class="ms-3">
-                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Linkedin</a>
-                                <span class="block text-sm text-slate-400">2 days ago</span>
+                                <a href="employer-detail.html" class="block text-[16px] font-semibold hover:text-blue-600 transition-all duration-500">Customs Compliance Specialist</a>
+                                <span class="block text-sm text-slate-400">4 days ago</span>
                             </div>
                         </div>
-
-                        <span class="bg-blue-600/10 group-hover:bg-blue-600 inline-block text-blue-600 group-hover:text-white text-xs px-2.5 py-0.5 font-semibold rounded-full transition-all duration-500">Remote</span>
+                
+                        <span class="bg-blue-600/10 group-hover:bg-blue-600 inline-block text-blue-600 group-hover:text-white text-xs px-2.5 py-0.5 font-semibold rounded-full transition-all duration-500">Part Time</span>
                     </div>
-
+                
                     <div class="mt-6">
-                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Php Developer</a>
-                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> Pakistan</h6>
+                        <a href="job-detail-two.html" class="text-lg hover:text-blue-600 font-semibold transition-all duration-500">Export Documentation Coordinator</a>
+                        <h6 class="text-base font-medium"><i class="uil uil-map-marker"></i> Chennai</h6>
                     </div>
-
+                
                     <div class="mt-6">
                         <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-[6px]">
-                            <div class="bg-blue-600 h-[6px] rounded-full" style="width: 55%"></div>
+                            <div class="bg-blue-600 h-[6px] rounded-full" style="width: 45%"></div>
                         </div>
                         <div class="mt-2">
-                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">21 applied</span> of 40 vacancy</span>
+                            <span class="text-slate-400 text-sm"><span class="text-slate-900 dark:text-white font-semibold inline-block">50% </span> match</span>
                         </div>
                     </div>
                 </div><!--end content-->
+                
+               
             </div><!--end grid-->
 
             <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
                 <div class="md:col-span-12 text-center">
-                    <a href="job-grid-two.html" class="btn btn-link text-slate-400 hover:text-blue-600 after:bg-blue-600 duration-500 ease-in-out">See More Jobs <i class="uil uil-arrow-right align-middle"></i></a>
+                    <a href="/job" class="btn btn-link text-slate-400 hover:text-blue-600 after:bg-blue-600 duration-500 ease-in-out">See More Jobs <i class="uil uil-arrow-right align-middle"></i></a>
                 </div>
             </div><!--end grid-->
         </div><!--end container-->
@@ -313,22 +368,36 @@
 
     <!-- Start -->
     <section class="relative md:py-24 py-16 overflow-hidden">
-        <div class="container  ">
-            <div class="relative grid md:grid-cols-3 grid-cols-1 items-center gap-[30px] z-1">
-                <div class="counter-box text-center">
-                    <h1 class="lg:text-5xl text-4xl font-semibold mb-2 dark:text-white"><span class="counter-value" data-target="1548">1548</span>K+</h1>
-                    <h5 class="counter-head text-sm font-semibold text-slate-400 uppercase">Job Fulfillment</h5>
-                </div><!--end counter box-->
-                
-                <div class="counter-box text-center">
-                    <h1 class="lg:text-5xl text-4xl font-semibold mb-2 dark:text-white"><span class="counter-value" data-target="25">25</span>+</h1>
-                    <h5 class="counter-head text-sm font-semibold text-slate-400 uppercase">Branches</h5>
-                </div><!--end counter box-->
-                
-                <div class="counter-box text-center">
-                    <h1 class="lg:text-5xl text-4xl font-semibold mb-2 dark:text-white"><span class="counter-value" data-target="9">9</span>+</h1>
-                    <h5 class="counter-head text-sm font-semibold text-slate-400 uppercase">Years Experience</h5>
-                </div><!--end counter box-->
+        
+
+        <div class='container'>
+            <div class=" p-10 mt-20 rounded-md bg-slate-900 dark:bg-zink-700">
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5 items-center">
+                    <div class="counter-box text-center">
+                        <h1 class="lg:text-5xl text-4xl font-semibold mb-2 text-white"><span class="counter-value" data-target="720">720</span>+</h1>
+                        <h5 class="counter-head text-sm font-semibold text-slate-400 uppercase">Registered Users</h5>
+                    </div><!--end counter box-->
+                    
+                    <div class="counter-box tesxt-center">
+                        <h1 class="lg:text-5xl text-4xl font-semibold mb-2 text-white"><span class="counter-value" data-target="62">62</span>+</h1>
+                        <h5 class="counter-head text-sm font-semibold text-slate-400 uppercase">Registered Companies</h5>
+                    </div><!--end counter box-->
+                    
+                    <div class="counter-box text-center">
+                        <h1 class="lg:text-5xl text-4xl font-semibold mb-2 text-white"><span class="counter-value" data-target="25">25</span>+</h1>
+                        <h5 class="counter-head text-sm font-semibold text-slate-400 uppercase">Popular Vacancy</h5>
+                    </div><!--end counter box-->
+    
+                    <div class="counter-box text-center">
+                        <h1 class="lg:text-5xl text-4xl font-semibold mb-2 text-white"><span class="counter-value" data-target="26">26</span>+</h1>
+                        <h5 class="counter-head text-sm font-semibold text-slate-400 uppercase">Verified Candidates</h5>
+                    </div><!--end col-->
+                    <div class="counter-box text-center">
+                        <h1 class="lg:text-5xl text-4xl font-semibold mb-2 text-white"><span class="counter-value" data-target="0">0</span>+</h1>
+                        <h5 class="counter-head text-sm font-semibold text-slate-400 uppercase">Visitor Count</h5>
+                    </div><!--end col-->
+
+                </div><!--end grid-->
             </div>
         </div>
 
@@ -400,7 +469,7 @@
         
         <div class="container md:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">
-                <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Latest Blog or News</h3>
+                <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Latest Articles or News</h3>
 
                 <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
             </div><!--end grid-->
@@ -471,7 +540,7 @@
         
     </section><!--end section-->
     <!-- End -->
-
+   
     
     
     <!-- End Footer -->

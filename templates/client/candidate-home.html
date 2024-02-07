@@ -14,11 +14,11 @@
         </div>
     </div><!--end container-->
 
-    <div class="px-3 relative " style="">
+    <div class="md:px-12 px-3 relative " style="">
         <div class="md:flex">
-            <div class="lg:w-1/5 md:w-1/3 md:px-3 p-4">
+            <div class="md:w-1/4 md:px-3 p-4">
                 <div class="relative md:-mt-48 -mt-32">
-                    <div class="p-6 rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900">
+                    <div class="p-6 rounded-xl shadow dark:shadow-gray-800 bg-white dark:bg-slate-900">
                         <div class="profile-pic text-center mb-5">
                             <input id="pro-img" name="profile-image" type="file" class="hidden" onchange="loadFile(event)">
                             <div>
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="border-t border-gray-100 dark:border-gray-700">
-                            <ul class="list-none sidebar-nav mb-0  py-6 border border-gray-100 shadow rounded flex md:block overflow-hidden " id="navmenu-nav">
+                            <ul class="list-none sidebar-nav mb-0  py-6  rounded flex md:block overflow-hidden " id="navmenu-nav">
                                 <li class="navbar-item account-menu">
                                     <a href="" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
                                         <span class="me-2 mb-0"><i data-feather="airplay" class="size-4"></i></span>
@@ -54,7 +54,7 @@
                                 <li class="navbar-item account-menu">
                                     <a href="user-invoice.html" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
                                         <span class="me-2 mb-0"><i data-feather="file-text" class="size-4"></i></span>
-                                        <h6 class="mb-0 font-medium">Saved Items</h6>
+                                        <h6 class="mb-0 font-medium">Saved Jobs</h6>
                                     </a>
                                 </li>
                     
@@ -84,319 +84,265 @@
                 </div>
             </div>
 
-            <div class="lg:w-4/5 md:w-2/3 md:px-3 mt-[30px] md:mt-0 p-4 m-3">
-                <div class="pb-6 border-b border-gray-100 dark:border-gray-700">
-                    <h5 class="text-xl font-semibold">{{request.user.first_name}} {{request.user.last_name}}</h5>
+           
+            <div class="md:w-3/4 md:px-14 mt-6 md:mt-0">
                 
-                    <p class="text-slate-400 mt-3">I have started my career as a trainee and prove my self and achieve all the milestone with good guidance and reach up to the project manager. In this journey, I understand all the procedure which make me a good developer, team leader, and a project manager.</p>
-                </div>
+                <div class="p-6 rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900">
+                    <div class='flex py-12' style="justify-content:space-between;">
+                        <h5 class="text-3xl font-semibold ">{{request.user.first_name}} {{request.user.last_name}}</h5>
+                        <button type="button" id="edit" name="send" class="p-2 px-3 inline-block font-semibold tracking-wide align-middle duration-500 text-base text-center bg-blue-500 text-white rounded-md mt-5" >Edit</button>
 
-                <div class="grid lg:grid-cols-2 grid-cols-1 gap-[30px] pt-6">
-                    <div>
-                        <h5 class="text-xl font-semibold">Personal Details :</h5>
-                        <div class="mt-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail fea icon-ex-md text-slate-400 me-3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Email :</h6>
-                                    <a href="" class="text-slate-400">{{request.user.email}} </a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark fea icon-ex-md text-slate-400 me-3"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">First Name</h6>
-                                    <a href="" class="text-slate-400">html</a>, <a href="" class="text-slate-400">css</a>, <a href="" class="text-slate-400">js</a>, <a href="" class="text-slate-400">mysql</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark fea icon-ex-md text-slate-400 me-3"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Last Name</h6>
-                                    <a href="" class="text-slate-400">html</a>, <a href="" class="text-slate-400">css</a>, <a href="" class="text-slate-400">js</a>, <a href="" class="text-slate-400">mysql</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-gift fea icon-ex-md text-slate-400 me-3"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Birthday :</h6>
-                                    <p class="text-slate-400 mb-0">2nd March, 1996</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe fea icon-ex-md text-slate-400 me-3"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">State </h6>
-                                    <p class="text-slate-400">{{request.user.state}}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin fea icon-ex-md text-slate-400 me-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">City </h6>
-                                    <a href="" class="text-slate-400">{{request.user.city}}</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin fea icon-ex-md text-slate-400 me-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Location ( Nearest Station Name ) </h6>
-                                    <a href="" class="text-slate-400">Wuhan</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-italic fea icon-ex-md text-slate-400 me-3"><line x1="19" y1="4" x2="10" y2="4"></line><line x1="14" y1="20" x2="5" y2="20"></line><line x1="15" y1="4" x2="9" y2="20"></line></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Language :</h6>
-                                    <a href="" class="text-slate-400">English</a>, <a href="" class="text-slate-400">Japanese</a>, <a href="" class="text-slate-400">Chinese</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe fea icon-ex-md text-slate-400 me-3"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Website :</h6>
-                                    <a href="" class="text-slate-400">www.kristajoseph.com</a>
-                                </div>
-                            </div>
-                           
-                            
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone fea icon-ex-md text-slate-400 me-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Mobile No :</h6>
-                                    <a href="" class="text-slate-400">(+12) 1254-56-4896</a>
-                                </div>
-                            </div>
+                    </div>
+                            <h5 class="text-lg font-semibold mb-4">Personal Detail :</h5>
+                            <div class=''>
+                                <form>
+                                    <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+                                        <div>
+                                            <label class="form-label font-medium">First Name : <span class="text-red-600">*</span></label>
+                                            <div class="form-icon relative mt-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user w-4 h-4 absolute top-3 start-4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                                <input type="text" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="First Name:" id="firstname" name="name" value="{{request.user.first_name}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="form-label font-medium">Last Name : <span class="text-red-600">*</span></label>
+                                            <div class="form-icon relative mt-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check w-4 h-4 absolute top-3 start-4"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                                                <input type="text" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Last Name:" id="lastname" name="name" value="{{request.user.last_name}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="form-label font-medium">Your Email : <span class="text-red-600">*</span></label>
+                                            <div class="form-icon relative mt-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail w-4 h-4 absolute top-3 start-4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                                <input type="email" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Email" name="email" value="{{request.user.email}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="form-label font-medium">State : </label>
+                                            <div class="form-icon relative mt-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark w-4 h-4 absolute top-3 start-4"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                                                <input name="name" id="occupation" type="text" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Occupation :" value="{{request.user.state}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="form-label font-medium">City : </label>
+                                            <div class="form-icon relative mt-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark w-4 h-4 absolute top-3 start-4"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                                                <input name="name" id="occupation" type="text" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Occupation :" value="{{request.user.city}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="form-label font-medium">Phone No. :</label>
+                                            <div class="form-icon relative mt-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone w-4 h-4 absolute top-3 start-4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                                <input name="number" id="number" type="number" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Phone :" value="{{request.user.phone}}" disabled>
+                                            </div>
+                                        </div>
 
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone fea icon-ex-md text-slate-400 me-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Whatsapp No :</h6>
-                                    <a href="" class="text-slate-400">(+12) 1254-56-4896</a>
-                                </div>
+                                        <div>
+                                            <label class="form-label font-medium">Website :</label>
+                                            <div class="form-icon relative mt-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe w-4 h-4 absolute top-3 start-4"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                                                <input name="url" id="url" type="url" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Url :">
+                                            </div>
+                                        </div>
+                                    </div><!--end grid-->
+    
+                                    {% comment %} <div class="grid grid-cols-1">
+                                        <div class="mt-5">
+                                            <label class="form-label font-medium">Description : </label>
+                                            <div class="form-icon relative mt-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle w-4 h-4 absolute top-3 start-4"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                                <textarea name="comments" id="comments" class="ps-11 w-full py-2 px-3 h-28 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Message :"></textarea>
+                                            </div>
+                                        </div>
+                                    </div><!--end row--> {% endcomment %}
+    
+                                    <input type="submit" id="submit" name="send" class="p-2 px-3 inline-block font-semibold tracking-wide align-middle duration-500 text-base text-center bg-blue-500 text-white rounded-md mt-5" value="Save Changes">
+                                </form><!--end form-->
                             </div>
                         </div>
-                    </div>
 
-                    <div class="mt-[30px] lg:mt-0">
-                        <h5 class="text-xl font-semibold">Experience :</h5>
+                       
+
+                        <div class=''>
+                            <div class="p-6 rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900 mt-6">
+                                <h5 class="text-lg font-semibold mb-4">Educational Qualifications :</h5>
+
+                                <div class=''>
+                                    <form>
+                                        <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+                                            <div>
+                                                <label class="form-label font-medium">Highest Academic Qualifications :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <input name="qualification" id="highest_qualification" type="text" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Highest Academic Qualifications :" value="{{request.user.qualification}}" disabled>
+                                                </div>
+                                            </div>
                     
-                        <div class="flex duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-4 rounded-md bg-white dark:bg-slate-900 mt-6">
-                            <img src="../../static/assets/images/client/circle-logo.png" class="h-16 w-16 p-4 bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-800 rounded-md" alt="">
-                            <div class="flex-1 content ms-4">
-                                <h4 class="text-lg text-medium">Senior Web Developer</h4>
-                                <p class="text-slate-400 mb-0">3 Years Experience</p>
-                                <p class="text-slate-400 mb-0"><a href="" class="text-indigo-600">CircleCi</a> @London, UK</p>    
+                                            <div>
+                                                <label class="form-label font-medium">Year of Passing :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <input name="passing_year" id="passing_year" type="number" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Year of Passing :" value="{{request.user.passing_year}}" disabled>
+                                                </div>
+                                            </div>
+                    
+                                            <div>
+                                                <label class="form-label font-medium">Additional Qualifications :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <input name="additional_qualifications" id="additional_qualifications" type="text" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Additional Qualifications :">
+                                                </div>
+                                            </div>
+                    
+                                            <div>
+                                                <label class="form-label font-medium">Specialised In :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <input name="specialization" id="specialization" type="text" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Specialised In :" value="{{request.user.specialised}}" disabled>
+                                                </div>
+                                            </div>
+                    
+                                            <div>
+                                                <label class="form-label font-medium">Fresher OR Experienced :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <select name="fresher_experienced" id="fresher_experienced" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" value="{{request.user.experience}}" disabled>
+                                                        <option value="Fresher">Fresher</option>
+                                                        <option value="Experienced">Experienced</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div><!--end grid-->
+        
+                                        
+        
+                                        <input type="submit" id="submit" name="send" class="p-2 px-3 inline-block font-semibold tracking-wide align-middle duration-500 text-base text-center bg-blue-500 text-white rounded-md mt-5" value="Save Changes">
+                                    </form><!--end form-->
+                                </div>
+                                   
+                               
                             </div>
                         </div>
 
-                        <div class="flex duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-4 rounded-md bg-white dark:bg-slate-900 mt-6">
-                            <img src="../../static/assets/images/client/facebook-logo-2019.png" class="h-16 w-16 p-4 bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-800 rounded-md" alt="">
-                            <div class="flex-1 content ms-4">
-                                <h4 class="text-lg text-medium">Web Designer</h4>
-                                <p class="text-slate-400 mb-0">2 Years Experience</p>
-                                <p class="text-slate-400 mb-0"><a href="" class="text-indigo-600">Facebook</a> @Washington D.C, USA</p>    
+                        <div class=''>
+                            <div class="p-6 rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900 mt-6">
+                                <h5 class="text-lg font-semibold mb-4">CURRENT EMPLOYEMENT DETAILS :</h5>
+
+                                <div class=''>
+                                    <form>
+                                        <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+                                            <div class="p-2 ">
+                                                <label class="form-label font-medium">Total work experience In Exim Industry :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <select name="work_experience" id="work_experience" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0">
+                                                        <option value="Less than 1 year">Less than 1 year</option>
+                                                        <option value="1-3 years">1-3 years</option>
+                                                        <option value="3-5 years">3-5 years</option>
+                                                        <option value="5-10 years">5-10 years</option>
+                                                        <option value="More than 10 years">More than 10 years</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                
+                                            <div class="p-2 ">
+                                                <label class="form-label font-medium">Current or Last Employer :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <input name="current_employer" id="current_employer" type="text" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Current or Last Employer :">
+                                                </div>
+                                            </div>
+                                
+                                            <div class="p-2 ">
+                                                <label class="form-label font-medium">Current Industry Type :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <select name="industry_type" id="industry_type" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0">
+                                                        <option value="Import">Import</option>
+                                                        <option value="Export">Export</option>
+                                                        <option value="Both">Both</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                
+                                            <div>
+                                                <label class="form-label font-medium">Functional Area :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <select name="functional_area" id="functional_area" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0">
+                                                        <option value="Sales">Sales</option>
+                                                        <option value="Operations">Operations</option>
+                                                        <option value="Logistics">Logistics</option>
+                                                        <option value="Administration">Administration</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                
+                                            <div class="p-2 ">
+                                                <label class="form-label font-medium">Operational Area Expertise :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <input type="radio" id="operational_expertise_yes" name="operational_expertise" value="Yes">
+                                                    <label for="operational_expertise_yes">Yes</label>
+                                                    <input type="radio" id="operational_expertise_no" name="operational_expertise" value="No">
+                                                    <label for="operational_expertise_no">No</label>
+                                                </div>
+                                            </div>
+                                
+                                            <div class="p-2 ">
+                                                <label class="form-label font-medium">Shipment Expertise :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <input type="radio" id="shipment_expertise_yes" name="shipment_expertise" value="Yes">
+                                                    <label for="shipment_expertise_yes">Yes</label>
+                                                    <input type="radio" id="shipment_expertise_no" name="shipment_expertise" value="No">
+                                                    <label for="shipment_expertise_no">No</label>
+                                                </div>
+                                            </div>
+                                
+                                            <div>
+                                                <label class="form-label font-medium">No of Yrs In Current Company :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <select name="years_in_company" id="years_in_company" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0">
+                                                        <option value="Less than 1 year">Less than 1 year</option>
+                                                        <option value="1-3 years">1-3 years</option>
+                                                        <option value="3-5 years">3-5 years</option>
+                                                        <option value="5-10 years">5-10 years</option>
+                                                        <option value="More than 10 years">More than 10 years</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                
+                                            <div>
+                                                <label class="form-label font-medium">Current Salary Per Month :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <input name="current_salary" id="current_salary" type="number" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0" placeholder="Current Salary Per Month :">
+                                                </div>
+                                            </div>
+                                
+                                            <div class="p-2 ">
+                                                <label class="form-label font-medium">Current Position Level :</label>
+                                                <div class="form-icon relative mt-2">
+                                                    <select name="position_level" id="position_level" class="ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 dark:border-gray-800 focus:ring-0">
+                                                        <option value="Entry Level">Entry Level</option>
+                                                        <option value="Mid Level">Mid Level</option>
+                                                        <option value="Senior Level">Senior Level</option>
+                                                        <option value="Executive">Executive</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div><!--end grid-->
+                                
+                                        <input type="submit" id="submit" name="send" class="p-2 px-3 inline-block font-semibold tracking-wide align-middle duration-500 text-base text-center bg-blue-500 text-white rounded-md mt-5" value="Save Changes">
+                                    </form><!--end form-->
+                                </div>
+                                
+                                   
+                               
                             </div>
                         </div>
-
-                        <div class="flex duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-4 rounded-md bg-white dark:bg-slate-900 mt-6">
-                            <img src="../../static/assets/images/client/spotify.png" class="h-16 w-16 p-4 bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-800 rounded-md" alt="">
-                            <div class="flex-1 content ms-4">
-                                <h4 class="text-lg text-medium">UI Designer</h4>
-                                <p class="text-slate-400 mb-0">2 Years Experience</p>
-                                <p class="text-slate-400 mb-0"><a href="" class="text-indigo-600">Spotify</a> @Perth, Australia</p>    
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h5 class="text-xl font-semibold">EDUCATIONAL QUALIFICATIONS :</h5>
-                        <div class="mt-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail fea icon-ex-md text-slate-400 me-3"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Highest Academic Qualifications :</h6>
-                                    <input value="{{request.user.email}}" class="text-slate-400 rounded-lg focus-outline-none p-2 px-3" disabled/>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark fea icon-ex-md text-slate-400 me-3"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">First Name</h6>
-                                    <a href="" class="text-slate-400">html</a>, <a href="" class="text-slate-400">css</a>, <a href="" class="text-slate-400">js</a>, <a href="" class="text-slate-400">mysql</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark fea icon-ex-md text-slate-400 me-3"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Last Name</h6>
-                                    <a href="" class="text-slate-400">html</a>, <a href="" class="text-slate-400">css</a>, <a href="" class="text-slate-400">js</a>, <a href="" class="text-slate-400">mysql</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-gift fea icon-ex-md text-slate-400 me-3"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Birthday :</h6>
-                                    <p class="text-slate-400 mb-0">2nd March, 1996</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe fea icon-ex-md text-slate-400 me-3"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">State </h6>
-                                    <p class="text-slate-400">{{request.user.state}}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin fea icon-ex-md text-slate-400 me-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">City </h6>
-                                    <a href="" class="text-slate-400">{{request.user.city}}</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin fea icon-ex-md text-slate-400 me-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Location ( Nearest Station Name ) </h6>
-                                    <a href="" class="text-slate-400">Wuhan</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-italic fea icon-ex-md text-slate-400 me-3"><line x1="19" y1="4" x2="10" y2="4"></line><line x1="14" y1="20" x2="5" y2="20"></line><line x1="15" y1="4" x2="9" y2="20"></line></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Language :</h6>
-                                    <a href="" class="text-slate-400">English</a>, <a href="" class="text-slate-400">Japanese</a>, <a href="" class="text-slate-400">Chinese</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe fea icon-ex-md text-slate-400 me-3"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Website :</h6>
-                                    <a href="" class="text-slate-400">www.kristajoseph.com</a>
-                                </div>
-                            </div>
-                           
-                            
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone fea icon-ex-md text-slate-400 me-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Mobile No :</h6>
-                                    <a href="" class="text-slate-400">(+12) 1254-56-4896</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center mt-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone fea icon-ex-md text-slate-400 me-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                <div class="flex-1">
-                                    <h6 class="text-indigo-600 dark:text-white font-medium mb-0">Whatsapp No :</h6>
-                                    <a href="" class="text-slate-400">(+12) 1254-56-4896</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        
+                        {% comment %} <div class="p-6 rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900 mt-6">
+                            <h5 class="text-lg font-semibold mb-5 text-red-600">Delete Account :</h5>
+    
+                            <p class="text-slate-400 mb-4">Do you want to delete the account? Please press below "Delete" button</p>
+    
+                            <a href="#" class="p-2 px-3 inline-block font-semibold tracking-wide align-middle duration-500 text-base text-center bg-red-600 text-white rounded-md">Delete</a>
+                        </div> {% endcomment %}
                 </div>
-
-                <h5 class="text-xl font-semibold mt-[30px]">Portfolio :</h5>
-            
-                <div class="grid lg:grid-cols-3 md:grid-cols-2 mt-6 gap-[30px]">
-                    <div class="group relative block overflow-hidden rounded-md duration-500">
-                        <img src="../../static/assets/images/portfolio/1.jpg" class="group-hover:origin-center group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
-                        <div class="absolute inset-2 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90 duration-500 z-0 rounded-md"></div>
-
-                        <div class="content duration-500">
-                            <div class="icon absolute z-10 opacity-0 group-hover:opacity-100 top-6 end-6 duration-500">
-                                <a href="../../static/assets/images/portfolio/1.jpg" class="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-full lightbox"><i class="uil uil-camera"></i></a>
-                            </div>
-
-                            <div class="absolute z-10 opacity-0 group-hover:opacity-100 bottom-6 start-6 duration-500">
-                                <a href="portfolio-detail-three.html" class="h6 text-lg font-medium hover:text-indigo-600 duration-500 ease-in-out">Mockup Collection</a>
-                                <p class="text-slate-400 mb-0">Abstract</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group relative block overflow-hidden rounded-md duration-500">
-                        <img src="../../static/assets/images/portfolio/2.jpg" class="group-hover:origin-center group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
-                        <div class="absolute inset-2 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90 duration-500 z-0 rounded-md"></div>
-
-                        <div class="content duration-500">
-                            <div class="icon absolute z-10 opacity-0 group-hover:opacity-100 top-6 end-6 duration-500">
-                                <a href="../../static/assets/images/portfolio/2.jpg" class="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-full lightbox"><i class="uil uil-camera"></i></a>
-                            </div>
-
-                            <div class="absolute z-10 opacity-0 group-hover:opacity-100 bottom-6 start-6 duration-500">
-                                <a href="portfolio-detail-three.html" class="h6 text-lg font-medium hover:text-indigo-600 duration-500 ease-in-out">Mockup Collection</a>
-                                <p class="text-slate-400 mb-0">Abstract</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group relative block overflow-hidden rounded-md duration-500">
-                        <img src="../../static/assets/images/portfolio/3.jpg" class="group-hover:origin-center group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
-                        <div class="absolute inset-2 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90 duration-500 z-0 rounded-md"></div>
-
-                        <div class="content duration-500">
-                            <div class="icon absolute z-10 opacity-0 group-hover:opacity-100 top-6 end-6 duration-500">
-                                <a href="../../static/assets/images/portfolio/3.jpg" class="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-full lightbox"><i class="uil uil-camera"></i></a>
-                            </div>
-
-                            <div class="absolute z-10 opacity-0 group-hover:opacity-100 bottom-6 start-6 duration-500">
-                                <a href="portfolio-detail-three.html" class="h6 text-lg font-medium hover:text-indigo-600 duration-500 ease-in-out">Mockup Collection</a>
-                                <p class="text-slate-400 mb-0">Abstract</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group relative block overflow-hidden rounded-md duration-500">
-                        <img src="../../static/assets/images/portfolio/4.jpg" class="group-hover:origin-center group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
-                        <div class="absolute inset-2 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90 duration-500 z-0 rounded-md"></div>
-
-                        <div class="content duration-500">
-                            <div class="icon absolute z-10 opacity-0 group-hover:opacity-100 top-6 end-6 duration-500">
-                                <a href="../../static/assets/images/portfolio/4.jpg" class="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-full lightbox"><i class="uil uil-camera"></i></a>
-                            </div>
-
-                            <div class="absolute z-10 opacity-0 group-hover:opacity-100 bottom-6 start-6 duration-500">
-                                <a href="portfolio-detail-three.html" class="h6 text-lg font-medium hover:text-indigo-600 duration-500 ease-in-out">Mockup Collection</a>
-                                <p class="text-slate-400 mb-0">Abstract</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group relative block overflow-hidden rounded-md duration-500">
-                        <img src="../../static/assets/images/portfolio/5.jpg" class="group-hover:origin-center group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
-                        <div class="absolute inset-2 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90 duration-500 z-0 rounded-md"></div>
-
-                        <div class="content duration-500">
-                            <div class="icon absolute z-10 opacity-0 group-hover:opacity-100 top-6 end-6 duration-500">
-                                <a href="../../static/assets/images/portfolio/5.jpg" class="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-full lightbox"><i class="uil uil-camera"></i></a>
-                            </div>
-
-                            <div class="absolute z-10 opacity-0 group-hover:opacity-100 bottom-6 start-6 duration-500">
-                                <a href="portfolio-detail-three.html" class="h6 text-lg font-medium hover:text-indigo-600 duration-500 ease-in-out">Mockup Collection</a>
-                                <p class="text-slate-400 mb-0">Abstract</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group relative block overflow-hidden rounded-md duration-500">
-                        <img src="../../static/assets/images/portfolio/6.jpg" class="group-hover:origin-center group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
-                        <div class="absolute inset-2 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90 duration-500 z-0 rounded-md"></div>
-
-                        <div class="content duration-500">
-                            <div class="icon absolute z-10 opacity-0 group-hover:opacity-100 top-6 end-6 duration-500">
-                                <a href="../../static/assets/images/portfolio/6.jpg" class="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-full lightbox"><i class="uil uil-camera"></i></a>
-                            </div>
-
-                            <div class="absolute z-10 opacity-0 group-hover:opacity-100 bottom-6 start-6 duration-500">
-                                <a href="portfolio-detail-three.html" class="h6 text-lg font-medium hover:text-indigo-600 duration-500 ease-in-out">Mockup Collection</a>
-                                <p class="text-slate-400 mb-0">Abstract</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--end grid-->
+            </div><!--end grid-->
     </div><!--end container-->
 </section>
 

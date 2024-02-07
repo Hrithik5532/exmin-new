@@ -31,94 +31,230 @@
 
 <!-- Start -->
 <section class="relative md:py-24 py-16">
-    <div class="container">
+    <div class="px-12">
         <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
-            <div class="lg:col-span-4 md:col-span-6">
+            <div class="lg:col-span-3 md:col-span-6">
                 <div class="shadow dark:shadow-gray-700 p-6 rounded-md bg-white dark:bg-slate-900 sticky top-20">
                     <form>
                         <div>
                             <input type="submit" class="btn bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md w-full" value="Apply Filter">
                         </div>
                         <div class="grid grid-cols-1 gap-3">
-                            <div>
-                                <label for="searchname" class="font-semibold">Search Company</label>
-                                <div class="relative mt-2">
-                                    <i class="uil uil-search text-lg absolute top-[5px] start-3"></i>
-                                    <input name="search" id="searchname" type="text" class="form-input border border-slate-100 dark:border-slate-800 ps-10" placeholder="Search">
-                                </div>
-                            </div>
+                            
                             
                             <div>
-                                <label class="font-semibold">Categories</label>
-                                <select class="form-select form-input border border-slate-100 dark:border-slate-800 block w-full mt-1">
-                                    <option value="WD">Web Designer</option>
-                                    <option value="WD">Web Developer</option>
-                                    <option value="UI">UI / UX Desinger</option>
+                                <label class="font-semibold">Industry Type</label>
+                                
+                                <select name="industry_type" id="industry_type" class="form-select form-input border border-slate-100 dark:border-slate-800 block w-full mt-1">
+                                    <option value="Custom Broker (CB-CHA)">Custom Broker (CB-CHA)</option>
+                                    <option value="Freight Forwarder">Freight Forwarder</option>
+                                    <option value="Shipping Line">Shipping Line</option>
+                                    <option value="NVOCC">NVOCC</option>
+                                    <option value="Merchant Exporter / Importer">Merchant Exporter / Importer</option>
+                                    <option value="Manufacturer Exporter / Importer">Manufacturer Exporter / Importer</option>
+                                    <option value="100% EOU">100% EOU</option>
+                                    <option value="Container Freight Station / ICD">Container Freight Station / ICD</option>
+                                    <option value="Airlines / IATA">Airlines / IATA</option>
+                                    <option value="Sea Port">Sea Port</option>
+                                    <option value="Import Export Consultancy">Import Export Consultancy</option>
+                                    <option value="Transporter">Transporter</option>
+                                    <option value="Private Warehouse">Private Warehouse</option>
+                                    <option value="Bonded Warehouse">Bonded Warehouse</option>
+                                    <option value="International Indenting Agency">International Indenting Agency</option>
+                                    <option value="Surveyors">Surveyors</option>
+                                </select>
+                                
+                                <div class="block mt-2">
+                                    <div class="flex justify-between">
+                                        <div class="inline-flex items-center mb-0">
+                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="Custom Broker (CB-CHA)" id="custom_broker">
+                                            <label class="form-checkbox-label text-slate-400" for="custom_broker">Custom Broker (CB-CHA)</label>
+                                        </div>
+                                        <!-- Number of jobs related to this industry type -->
+                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">3</span>
+                                    </div>
+                                
+                                    <!-- Repeat this structure for other industry types -->
+                                    <!-- For example: -->
+                                    <div class="flex justify-between">
+                                        <div class="inline-flex items-center mb-0">
+                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="Freight Forwarder" id="freight_forwarder">
+                                            <label class="form-checkbox-label text-slate-400" for="freight_forwarder">Freight Forwarder</label>
+                                        </div>
+                                        <!-- Number of jobs related to this industry type -->
+                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">7</span>
+                                    </div>
+                                
+                                    <!-- Repeat this structure for each industry type -->
+                                </div>
+                                <div class="block mt-2">
+                                    <div class="flex justify-between">
+                                        <div class="inline-flex items-center mb-0">
+                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="Shipping Line" id="shipping_line">
+                                            <label class="form-checkbox-label text-slate-400" for="shipping_line">Shipping Line</label>
+                                        </div>
+                                        <!-- Number of jobs related to this industry type -->
+                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">5</span>
+                                    </div>
+                                
+                                    <!-- Repeat this structure for other industry types -->
+                                    <!-- For example: -->
+                                    <div class="flex justify-between">
+                                        <div class="inline-flex items-center mb-0">
+                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="NVOCC" id="nvocc">
+                                            <label class="form-checkbox-label text-slate-400" for="nvocc">NVOCC</label>
+                                        </div>
+                                        <!-- Number of jobs related to this industry type -->
+                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">8</span>
+                                    </div>
+                                
+                                    <!-- Continue adding similar structures for each industry type -->
+                                    <!-- For example: -->
+                                    <div class="flex justify-between">
+                                        <div class="inline-flex items-center mb-0">
+                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="Manufacturer Exporter / Importer" id="manufacturer_exporter_importer">
+                                            <label class="form-checkbox-label text-slate-400" for="manufacturer_exporter_importer">Manufacturer Exporter / Importer</label>
+                                        </div>
+                                        <!-- Number of jobs related to this industry type -->
+                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">6</span>
+                                    </div>
+                                
+                                    <!-- Repeat this structure for each industry type -->
+                                </div>
+                                
+                            </div>
+
+                            <div>
+                                <label class="font-semibold">Functional areas</label>
+                                <select name="functional_area" id="functional_area">
+                                    <optgroup label="CB-CHA">
+                                        <option value="CB-CHA - Documentation">Documentation</option>
+                                        <option value="CB-CHA - Operations Customer Support">Operations Customer Support</option>
+                                        <option value="CB-CHA - Operations Indoor">Operations Indoor</option>
+                                        <option value="CB-CHA - Operations Outdoor CFS Pass Holder">Operations Outdoor CFS Pass Holder</option>
+                                        <option value="CB-CHA - Operations &quot;F&quot; Card Holder">&quot;F&quot; Card Holder</option>
+                                        <option value="CB-CHA - Operations &quot;G&quot; Card Holder">&quot;G&quot; Card Holder</option>
+                                        <option value="CB-CHA - Operations &quot;H&quot; Card Holder">&quot;H&quot; Card Holder</option>
+                                        <option value="CB-CHA - Sales &amp; Marketing">Sales &amp; Marketing</option>
+                                        <option value="CB-CHA - Accounts">Accounts</option>
+                                        <option value="CB-CHA - D.O. Incharge">D.O. Incharge</option>
+                                    </optgroup>
+                                    <optgroup label="FF">
+                                        <option value="FF Documentation">Documentation</option>
+                                        <option value="FF Outdoor Operations">Outdoor Operations</option>
+                                        <option value="FF Indoor Operations">Indoor Operations</option>
+                                        <option value="FF Sales &amp; Marketing">Sales &amp; Marketing</option>
+                                        <option value="FF Accounts">Accounts</option>
+                                        <option value="FF Customer Support">Customer Support</option>
+                                        <option value="FF Pricing">Pricing</option>
+                                    </optgroup>
+                                    <!-- Add other functional areas in similar optgroup structure -->
                                 </select>
                             </div>
 
                             <div>
                                 <label class="font-semibold">Location</label>
-                                <select class="form-select form-input border border-slate-100 dark:border-slate-800 block w-full mt-1">
-                                    <option value="NY">New York</option>
-                                    <option value="MC">North Carolina</option>
-                                    <option value="SC">South Carolina</option>
+                                <select class="form-select form-input border border-slate-100 dark:border-slate-800 block w-full mt-1" name="location_city" id="location_city">
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Bangalore">Bangalore</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Ahmedabad">Ahmedabad</option>
+                                    <option value="Surat">Surat</option>
+                                    <option value="Jaipur">Jaipur</option>
+                                    <option value="Lucknow">Lucknow</option>
+                                    <option value="Kanpur">Kanpur</option>
+                                    <option value="Nagpur">Nagpur</option>
+                                    <option value="Patna">Patna</option>
+                                    <option value="Indore">Indore</option>
+                                    <option value="Thane">Thane</option>
+                                    <option value="Bhopal">Bhopal</option>
+                                    <option value="Visakhapatnam">Visakhapatnam</option>
+                                    <option value="Vadodara">Vadodara</option>
+                                    <option value="Firozabad">Firozabad</option>
+                                    <option value="Ludhiana">Ludhiana</option>
+                                    <option value="Rajkot">Rajkot</option>
+                                    <option value="Agra">Agra</option>
+                                    <option value="Siliguri">Siliguri</option>
+                                    <option value="Nashik">Nashik</option>
+                                    <option value="Faridabad">Faridabad</option>
+                                    <option value="Patiala">Patiala</option>
+                                    <option value="Meerut">Meerut</option>
+                                    <option value="Kalyan-Dombivali">Kalyan-Dombivali</option>
+                                    <option value="Vasai-Virar">Vasai-Virar</option>
+                                    <option value="Varanasi">Varanasi</option>
+                                    <option value="Srinagar">Srinagar</option>
+                                    <option value="Aurangabad">Aurangabad</option>
+                                    <option value="Dhanbad">Dhanbad</option>
+                                    <option value="Amritsar">Amritsar</option>
+                                    <option value="Navi Mumbai">Navi Mumbai</option>
+                                    <option value="Allahabad">Allahabad</option>
+                                    <option value="Howrah">Howrah</option>
+                                    <option value="Gwalior">Gwalior</option>
+                                    <option value="Jabalpur">Jabalpur</option>
+                                    <option value="Coimbatore">Coimbatore</option>
+                                    <option value="Vijayawada">Vijayawada</option>
+                                    <option value="Jodhpur">Jodhpur</option>
+                                    <option value="Madurai">Madurai</option>
+                                    <option value="Raipur">Raipur</option>
+                                    <option value="Kota">Kota</option>
+                                    <option value="Guwahati">Guwahati</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Hubli-Dharwad">Hubli-Dharwad</option>
+                                    <option value="Mysore">Mysore</option>
+                                    <option value="Tiruchirappalli">Tiruchirappalli</option>
+                                    <option value="Bareilly">Bareilly</option>
+                                    <option value="Aligarh">Aligarh</option>
+                                    <option value="Tiruppur">Tiruppur</option>
+                                    <option value="Gurgaon">Gurgaon</option>
+                                    <option value="Moradabad">Moradabad</option>
+                                    <option value="Jalandhar">Jalandhar</option>
+                                    <option value="Bhubaneswar">Bhubaneswar</option>
+                                    <option value="Salem">Salem</option>
+                                    <option value="Warangal">Warangal</option>
+                                    <option value="Mira-Bhayandar">Mira-Bhayandar</option>
+                                    <option value="Jalgaon">Jalgaon</option>
+                                    <option value="Guntur">Guntur</option>
+                                    <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                                    <option value="Bhiwandi">Bhiwandi</option>
+                                    <option value="Saharanpur">Saharanpur</option>
+                                    <option value="Gorakhpur">Gorakhpur</option>
+                                    <option value="Bikaner">Bikaner</option>
+                                    <option value="Amravati">Amravati</option>
+                                    <option value="Noida">Noida</option>
+                                    <option value="Jamshedpur">Jamshedpur</option>
+                                    <option value="Bhilai Nagar">Bhilai Nagar</option>
+                                    <option value="Cuttack">Cuttack</option>
+                                    <option value="Firozabad">Firozabad</option>
+                                    <option value="Kochi">Kochi</option>
+                                    <option value="Nellore">Nellore</option>
+                                    <option value="Bhavnagar">Bhavnagar</option>
+                                    <option value="Dehradun">Dehradun</option>
+                                    <option value="Durgapur">Durgapur</option>
+                                    <option value="Asansol">Asansol</option>
+                                    <option value="Rourkela">Rourkela</option>
+                                    <option value="Nanded">Nanded</option>
+                                    <option value="Kolhapur">Kolhapur</option>
+                                    <option value="Ajmer">Ajmer</option>
+                                    <option value="Akola">Akola</option>
+                                    <option value="Gulbarga">Gulbarga</option>
+                                    <option value="Jamnagar">Jamnagar</option>
+                                    <option value="Ujjain">Ujjain</option>
+                                    <option value="Loni">Loni</option>
+                                    <option value="Siliguri">Siliguri</option>
+                                    <option value="Jhansi">Jhansi</option>
+                                    <option value="Ulhasnagar">Ulhasnagar</option>
+                                    <option value="Jammu">Jammu</option>
+                                    <option value="Sangli-Miraj & Kupwad">Sangli-Miraj & Kupwad</option>
+                                    
+                                
                                 </select>
                             </div>
                             
-                            <div>
-                                <label class="font-semibold">Job Types</label>
-                                <div class="block mt-2">
-                                    <div class="flex justify-between">
-                                        <div class="inline-flex items-center mb-0">
-                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="fulltime">
-                                            <label class="form-checkbox-label text-slate-400" for="fulltime">Full Time</label>
-                                        </div>
-
-                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">3</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="inline-flex items-center mb-0">
-                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="parttime">
-                                            <label class="form-checkbox-label text-slate-400" for="parttime">Part Time</label>
-                                        </div>
-
-                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">7</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="inline-flex items-center mb-0">
-                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="Freelancing">
-                                            <label class="form-checkbox-label text-slate-400" for="Freelancing">Freelancing</label>
-                                        </div>
-
-                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">4</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="inline-flex items-center mb-0">
-                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="fixedprice">
-                                            <label class="form-checkbox-label text-slate-400" for="fixedprice">Fixed Price</label>
-                                        </div>
-
-                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">6</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="inline-flex items-center mb-0">
-                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="Remote">
-                                            <label class="form-checkbox-label text-slate-400" for="Remote">Remote</label>
-                                        </div>
-
-                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">7</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="inline-flex items-center mb-0">
-                                            <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-blue-600 focus:border-blue-300 focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="hourlybasis">
-                                            <label class="form-checkbox-label text-slate-400" for="hourlybasis">Hourly Basis</label>
-                                        </div>
-
-                                        <span class="bg-blue-600/10 text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full h-5">44</span>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             
                             <div>
                                 <label class="font-semibold">Salary</label>
@@ -150,7 +286,7 @@
                 </div>
             </div><!--end col-->
 
-            <div class="lg:col-span-8 md:col-span-6">
+            <div class="lg:col-span-9 md:col-span-6">
                 <div class="grid grid-cols-1 gap-[30px]">
                     {% for i in job_list %}
                     

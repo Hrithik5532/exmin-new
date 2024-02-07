@@ -31,6 +31,7 @@ urlpatterns = [
     path('employer-setting',employer_setting,name="employer-setting"),
     path('all-companies',all_companies,name="all_companies"),
 
-    path('api-functionalArea/<int:pk>',fetchFunctionalArea)
+
+    path('api-functionalArea/', fetchFunctionalArea),
 
 ]

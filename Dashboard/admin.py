@@ -5,10 +5,10 @@ from .models import *
 
 admin.site.register(Articles),
 admin.site.register(SupportTickets)
-admin.site.register(IndustryType)
+# admin.site.register(IndustryType)
 
 
-class FunctionalAreaAdmin(admin.ModelAdmin):
-    list_filter = ('industry',)
+# class FunctionalAreaAdmin(admin.ModelAdmin):
+#     list_filter = ('industry',)
 
-admin.site.register(FunctionalArea, FunctionalAreaAdmin)
+# admin.site.register(FunctionalArea, FunctionalAreaAdmin)

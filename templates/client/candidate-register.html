@@ -220,7 +220,8 @@
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                     <h2 id="heading">Sign Up Your User Account</h2>
                     <p>Fill all form field to go to next step</p>
-                    <form id="msform" action="" method="POST">
+                    <form id="msform" action="{% url 'candidate-register' %}" method="POST" enctype= 'multipart/form-data'>
+                        {% csrf_token %}
                         <!-- progressbar -->
                         <ul id="progressbar">
                             <li class="active" id="account"><strong>Account</strong></li>
@@ -426,12 +427,12 @@
                                             </div>
                                             <div class="text-sm flex w-full gap-3 px-2">
                                                 <div class="flex   gap-2">
-                                                    <input type="radio" id="import" name="experience" value="Fresher">
-                                                    <label for="import">Fresher</label>
+                                                    <input type="radio" id="fresher" name="experience" value="Fresher">
+                                                    <label for="fresher">Fresher</label>
                                                 </div>
                                                 <div class="flex  gap-2">
-                                                    <input type="radio" id="export" name="experience" value="Experienced">
-                                                    <label for="export">Experienced</label>
+                                                    <input type="radio" id="experienced" name="experience" value="Experienced">
+                                                    <label for="experienced">Experienced</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -461,7 +462,7 @@
                                                     <label class="font-semibold md:invisible md:block hidden">Years</label>
                                                     <div class="relative mt-1">
                                                         
-                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="In years" name="experience">
+                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="In years" name="exim_yr_experience">
                                                     </div>
                                                 </div>
         
@@ -469,7 +470,7 @@
                                                     <label class="font-semibold md:invisible md:block hidden">Months</label>
                                                     <div class="relative mt-1">
                                                         
-                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="in months" name="experience">
+                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="in months" name="exim_mn_experience">
                                                     </div>
                                                 </div>
                                             </div>
@@ -485,7 +486,7 @@
                                                     <label class="font-semibold md:invisible md:block hidden">Years</label>
                                                     <div class="relative mt-1">
                                                         
-                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="In years" name="experience">
+                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="In years" name="current_yr_experience">
                                                     </div>
                                                 </div>
         
@@ -493,7 +494,7 @@
                                                     <label class="font-semibold md:invisible md:block hidden">Months</label>
                                                     <div class="relative mt-1">
                                                         
-                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="in months" name="experience">
+                                                        <input type="number" class="form-input border border-slate-100 dark:border-slate-800 ps-12" placeholder="in months" name="current_mn_experience">
                                                     </div>
                                                 </div>
                                             </div>
@@ -501,7 +502,7 @@
                                         <label class="fieldlabels" >Last Employer: </label>
                                         <input type="text" name="last_employer" placeholder="Last Employer." />
                                 
-                                        <div class="text-sm md:flex block w-full md:w-4/5 gap-2" id="skillsContainer">
+                                        <div class="text-sm md:flex block w-full md:w-4/5 gap-2" id="industryContainer">
                                             <label class="fieldlabels">Current Industry Type:</label>
                                             <select id="current_industry_dropdown" class="form-select form-input border block w-full mt-1">
                                                 <option value="">Select</option>
@@ -509,19 +510,28 @@
                                                     <option value="{{i.id}}">{{i.name}}</option>
                                                 {% endfor %}
                                             </select>
-                                            <button id="addSkill" type="button" class="btn bg-blue-900 text-white" onclick="addNewIndustry()">Add</button>
-                                            <!-- Readonly input to store added skills -->
-                                            <input type="hidden" class="bg-blue-300 text-blue-900 rounded-full p-2 m-2" id="current_industry" name="current_industry" readonly>
+                                            <button id="addNewIndustry" type="button" class="btn bg-blue-900 text-white" onclick="addNewIndustry()">Add</button>
+                                            <!-- Container for displaying selected industries as buttons -->
+                                            <!-- Hidden input to store added industries -->
+                                            <input type="hidden" id="current_industry" name="current_industry">
                                         </div>
+                                        <div id="selectedIndustries" class="m-2"></div>
+                                        <div>
 
-                                        <label class="fieldlabels">Functional Area:</label>
-                                        <select name="functional_area" id="functional_area" class="form-select form-input border block w-full mt-1">
-                                            <!-- Options will be populated dynamically based on the selected industry -->
-                                        </select>
-                                       
+                                            <label class="fieldlabels">Functional Area:</label>
+                                            <select name="functional_area" id="functional_area" class="form-select form-input border block w-full mt-1">
+                                                <!-- Options will be populated dynamically based on the selected industry -->
+                                            </select>
+                                            <button id="addFuntionalArea" type="button" class="btn bg-blue-900 text-white" onclick="addFuntionalArea_()">Add</button>
+                                            <!-- Container for displaying selected industries as buttons -->
+                                            <!-- Hidden input to store added industries -->
+                                            <input type="hidden" id="funtional_area" name="funtional_area">
+                                        </div>
+                                        <div id="selectedFuntionalArea" class="m-2"></div>
+
 
                                         <label class="fieldlabels">Current Position: </label>
-                                        <select name="position" id="position" class="form-select form-input border block w-full" required="">
+                                        <select name="current_position" id="position" class="form-select form-input border block w-full" required="">
                                             <option value="0">Select</option>
                                             <option value="1" selected="">Assistant</option>
                                             <option value="2">Asst. Management</option>
@@ -564,11 +574,11 @@
                                             </div>
                                             <div class="text-sm flex w-full md:w-4/5 gap-3 px-2">
                                                     <div class="flex  gap-2">
-                                                        <input type="radio" id="import" name="shipment_expertise" value="Sea">
-                                                        <label for="import">Sea</label>
+                                                        <input type="radio" id="sea" name="shipment_expertise" value="Sea">
+                                                        <label for="sea">Sea</label>
                                                     </div>
                                                     <div class="flex  gap-2">
-                                                        <input type="radio" id="export" name="shipment_expertise" value="Air">
+                                                        <input type="radio" id="air" name="shipment_expertise" value="Air">
                                                         <label for="air">Air</label>
                                                     </div>
                                                     <div class="flex  gap-2">
@@ -606,7 +616,7 @@
                                  <label class="fieldlabels">Confirm Password: *</label> 
                                  <input type="password" name="cpwd" placeholder="Confirm Password" /> 
                             </div> 
-                            <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                            <input type="submit"  class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
 
                         </fieldset>
                         
@@ -860,70 +870,139 @@
 </script>
 </section>
 
-<script>
-    document.getElementById('current_industry').addEventListener('change', function() {
-        var selectedIndustry = this.value;
-
-        // Make AJAX request to fetch data from the API
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://103.160.144.16/api-functionalArea/' + selectedIndustry, true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    var data = JSON.parse(xhr.responseText);
-
-                    // Clear existing options in the Functional Area dropdown
-                    var functionalAreaDropdown = document.getElementById('functional_area');
-                    functionalAreaDropdown.innerHTML = '<option value="">Select</option>';
-
-                    // Populate options based on the fetched data
-                    for (var i = 0; i < data.length; i++) {
-                        var option = document.createElement('option');
-                        option.value = data[i].id;
-                        option.text = data[i].name;
-                        functionalAreaDropdown.appendChild(option);
-                    }
-                } else {
-                    console.error('Error fetching data:', xhr.statusText);
-                }
-            }
-        };
-        xhr.send();
-    });
-</script>
-
-
-
-<script>
-    function addNewIndustry() {
-        var dropdown = document.getElementById('current_industry_dropdown');
-        var hiddenInput = document.getElementById('current_industry');
-        var selectedIndustry = dropdown.options[dropdown.selectedIndex].text;
-        var selectedValue = dropdown.options[dropdown.selectedIndex].value;
     
-        // Prevent adding if the select option or empty value is selected
+<script>
+    function addFuntionalArea_() {
+        var dropdown = document.getElementById('functional_area');
+        var hiddenInput = document.getElementById('funtional_area');
+        var selectedValue = dropdown.value;
+        var selectedText = dropdown.options[dropdown.selectedIndex].text;
+        var selectedContainer = document.getElementById('selectedFuntionalArea');
+    
         if (!selectedValue) {
-            alert("Please select an industry.");
+            alert("Please select a functional area.");
             return;
         }
     
-        // Split existing values into an array
         var existingValues = hiddenInput.value ? hiddenInput.value.split(', ') : [];
+        // Check if already three functional areas are added
+        if (existingValues.length >= 3) {
+            alert("You can add a maximum of 3 functional areas.");
+            return;
+        }
     
-        // Check if already two industries are added
-        if (existingValues.length >= 2) {
-            alert("You can add a maximum of 2 industries.");
+        if (!existingValues.includes(selectedValue)) {
+            existingValues.push(selectedValue);
+            hiddenInput.value = existingValues.join(', ');
+    
+            // Create and append the button for the newly added functional area
+            var areaButton = document.createElement('button');
+            areaButton.textContent = selectedText + " ✖"; // Add visual cue for removal
+            areaButton.classList.add("btn", "bg-blue-300", "text-blue-900", "rounded-full", "p-2", "m-2");
+            areaButton.onclick = function() { removeFuntionalArea(selectedValue, areaButton); };
+            selectedContainer.appendChild(areaButton);
         } else {
-            // Add the selected industry if it's not already added
-            if (!existingValues.includes(selectedIndustry)) {
-                existingValues.push(selectedIndustry);
+            alert("This functional area is already added.");
+        }
+    }
+    
+    function removeFuntionalArea(value, buttonElement) {
+        var hiddenInput = document.getElementById('funtional_area');
+        var existingValues = hiddenInput.value.split(', ');
+        var index = existingValues.indexOf(value);
+    
+        if (index > -1) {
+            existingValues.splice(index, 1); // Remove the functional area from the array
+            hiddenInput.value = existingValues.join(', ');
+            buttonElement.remove(); // Remove the button from the display
+        }
+    }
+    
+    
+    
+    function updateFunctionalAreas() {
+        var hiddenInput = document.getElementById('current_industry');
+        var selectedIndustries = hiddenInput.value; // This is your list of selected industry IDs
+        var functionalAreaDropdown = document.getElementById('functional_area');
+    
+        if (selectedIndustries) {
+            fetch(`http://127.0.0.1:8000/api-functionalArea/?ids=${selectedIndustries}`)
+            .then(response => response.json())
+            .then(data => {
+                    // Assuming the API returns an array of functional areas
+                    // Clear existing options first
+                    functionalAreaDropdown.innerHTML = '';
+                    // Add a default option
+                    var defaultOption = new Option("Select Functional Area", "");
+                    functionalAreaDropdown.add(defaultOption);
+    
+                    // Populate the dropdown with options from the API response
+                    data.forEach(function(area) {
+                        var option = new Option(area.name, area.id); // Assuming 'name' and 'id' are the properties
+                        functionalAreaDropdown.add(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching functional areas:', error));
+        } else {
+            // Clear the dropdown if no industries are selected
+            functionalAreaDropdown.innerHTML = '';
+            var defaultOption = new Option("Select Functional Area", "");
+            functionalAreaDropdown.add(defaultOption);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        function addNewIndustry() {
+            var dropdown = document.getElementById('current_industry_dropdown');
+            var hiddenInput = document.getElementById('current_industry');
+            var selectedValue = dropdown.value; // Simplified
+            var selectedIndustry = dropdown.options[dropdown.selectedIndex].text;
+            var selectedIndustriesContainer = document.getElementById('selectedIndustries');
+    
+            if (!selectedValue) {
+                alert("Please select an industry.");
+                return;
+            }
+    
+            var existingValues = hiddenInput.value ? hiddenInput.value.split(', ') : [];
+            if (existingValues.length >= 2) {
+                alert("You can add a maximum of 2 industries.");
+                return;
+            }
+    
+            if (!existingValues.includes(selectedValue)) {
+                existingValues.push(selectedValue);
                 hiddenInput.value = existingValues.join(', ');
+    
+                // Create and append the button for the newly added industry
+                var industryButton = document.createElement('button');
+                industryButton.textContent = selectedIndustry + " ✖"; // Add visual cue for removal
+                industryButton.classList.add("btn", "bg-blue-300", "text-blue-900", "rounded-full", "p-2", "m-2");
+                industryButton.onclick = function() { removeIndustry(selectedValue, industryButton); };
+                selectedIndustriesContainer.appendChild(industryButton);
+                updateFunctionalAreas();
             } else {
                 alert("This industry is already added.");
             }
         }
-    }
-    </script>
+        function removeIndustry(value, buttonElement) {
+            var hiddenInput = document.getElementById('current_industry');
+            var existingValues = hiddenInput.value.split(', ');
+            var index = existingValues.indexOf(value);
+    
+            if (index > -1) {
+                existingValues.splice(index, 1); // Remove the industry from the array
+                hiddenInput.value = existingValues.join(', ');
+                buttonElement.remove(); // Remove the button from the display
+                updateFunctionalAreas();
+            }
+        }
+        
+    
+        // Bind the addNewIndustry function to the Add button click event
+        document.getElementById('addNewIndustry').addEventListener('click', addNewIndustry);
+    });
+</script>
+    
 
 
 {% endblock content %}

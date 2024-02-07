@@ -44,20 +44,45 @@ def candidate_register(request):
     if request.user.is_authenticated:
         return redirect('home')  
     if request.method == 'POST':
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
+        first_name = request.POST.get('fname')
+        last_name = request.POST.get('lname')
         email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        phone2 = request.POST.get('phone2')
+        phone = request.POST.get('phno')
+        whatsapp = request.POST.get('whatsapp')
+        dob = request.POST.get('dob')
         
-        address = request.POST.get('address')
         city = request.POST.get('city')
         state = request.POST.get('state')
-        pincode = request.POST.get('pincode')
+        nearest_location= request.POST.get('location')
+
+        qualification= request.POST.get('qualification')
+        passing_year= request.POST.get('passing_year')
+        additional_qualification= request.POST.get('additional_qualification')
+        specialised= request.POST.get('specialised')
+        addedSkills = request.POST.getlist('addedSkills')
+        
+        experience = request.POST.get('experience')
+        pic = request.FILES['pic']
+        resume= request.FILES['resume']
+        addedSkills = request.POST.getlist('addedSkills')
+        exim_yr_experience = request.POST.get('exim_yr_experience')
+        exim_mn_experience = request.POST.get('exim_mn_experience')
+        current_yr_experience = request.POST.get('current_yr_experience')
+        current_mn_experience = request.POST.get('current_mn_experience')
+        last_employer =request.POST.get('last_employer')
+        
+        
+        current_industry = request.POST.getlist('current_industry')
+        funtional_area = request.POST.getlist('funtional_area')
+        
+        current_position =request.POST.get('current_position')
+        shipment_expertise =request.POST.get('shipment_expertise')
+        operational_area =request.POST.get('operational_area')
+        current_salary =request.POST.get('current_salary')
+
+        
         password = request.POST.get('password')
-        station = request.POST.get('station')
-        qualification = request.POST.get('qualification')
-        addedSkills = request.POST.get('addedSkills')
+       
         
         
         if User.objects.filter(email=email).exists():
@@ -70,8 +95,44 @@ def candidate_register(request):
                 phone = phone,
                 first_name=first_name,
                 last_name = last_name,
-            
+                whatsapp=whatsapp,
+                dob=dob,
+                state=state,
+                city=city,
+                nearest_station=nearest_location
             )
+            candidate = Employee.objects.create(
+                user = user,
+                qualification=qualification,
+                experience=experience,
+                passing_year=passing_year,
+                additional_qualification=additional_qualification,
+                specialised=specialised,
+                exim_yr_experience=exim_yr_experience,
+                exim_mn_experience=exim_mn_experience,
+                current_yr_experience=current_yr_experience,
+                current_mn_experience=current_mn_experience,
+                last_employer=last_employer,
+                current_position=current_position,
+                shipment_expertise=shipment_expertise,
+                operational_area=operational_area,
+                current_salary=current_salary
+            )
+            
+            candidate.profile_pic = pic
+            candidate.resume = resume
+            
+            for i in addedSkills:
+                candidate.skills.add(i)
+            
+            for i in current_industry:
+                candidate.current_industry.add(i) 
+            
+            for i in funtional_area:
+                candidate.funtional_area.add(i)
+                       
+            candidate.save()
+            
             user.set_password(password)
             user.save()
             login(request, user)
@@ -239,8 +300,18 @@ def all_companies(request):
 
 
 from Dashboard.serializers import FunctionalAreaSerializer
-def fetchFunctionalArea(reques,pk):
-    industry = IndustryType.objects.get(id=pk)
-    funtional_area = FunctionalArea.objects.filter(industry=industry)
-    
-    return JsonResponse(FunctionalAreaSerializer(funtional_area,many=True).data,safe=False)
+from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
+
+def fetchFunctionalArea(request):
+    # Get 'ids' from query parameters
+    ids = request.GET.get('ids')
+    if ids:
+        ids_list = ids.split(',')  # Split the string into a list of IDs
+        try:
+            industries = IndustryType.objects.filter(id__in=ids_list)
+            functional_areas = FunctionalArea.objects.filter(industry__in=industries)
+            return JsonResponse(FunctionalAreaSerializer(functional_areas, many=True).data, safe=False)
+        except ObjectDoesNotExist:
+            return JsonResponse({'error': 'Industries not found'}, status=404)
+    return JsonResponse({'error': 'No IDs provided'}, status=400)

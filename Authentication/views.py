@@ -9,6 +9,8 @@ from django.contrib.auth import logout
 from taggit.models import Tag
 from django.db.models import Q
 from jobs.models import *
+import ast
+
 # Create your views here.
 def signin(request):
         
@@ -64,7 +66,7 @@ def candidate_register(request):
         experience = request.POST.get('experience')
         pic = request.FILES['pic']
         resume= request.FILES['resume']
-        addedSkills = request.POST.getlist('addedSkills')
+        addedSkills = request.POST.get('addedSkills')
         exim_yr_experience = request.POST.get('exim_yr_experience')
         exim_mn_experience = request.POST.get('exim_mn_experience')
         current_yr_experience = request.POST.get('current_yr_experience')
@@ -86,9 +88,12 @@ def candidate_register(request):
         
         
         if User.objects.filter(email=email).exists():
+            # pass
             messages.error(request,'Email Already Registered !')
             return render(request,'client/login.html') 
         else:
+            # pass
+            # if  User.objects.filter(email=email).exists():
             user = User.objects.create(
                 email=email,
                 username=email,
@@ -101,6 +106,11 @@ def candidate_register(request):
                 city=city,
                 nearest_station=nearest_location
             )
+            # user = User.objects.get(email=email)
+
+        # else:
+            
+            # user = User.objects.get(email=email)
             candidate = Employee.objects.create(
                 user = user,
                 qualification=qualification,
@@ -122,8 +132,10 @@ def candidate_register(request):
             candidate.profile_pic = pic
             candidate.resume = resume
             
-            for i in addedSkills:
-                candidate.skills.add(i)
+            for k in ast.literal_eval(addedSkills):
+                skill = SkillSet.objects.get_or_create(name=k)
+                print(skill)
+                candidate.skills.add(skill[0].id)
             
             for i in current_industry:
                 candidate.current_industry.add(i) 
@@ -141,9 +153,11 @@ def candidate_register(request):
                 messages.success(request,"Welcome Back !")
                 return redirect('home')
             else:
+                messages.success(request,'OTP sent on email')
                 return redirect('otp_verification')
     industry = IndustryType.objects.all()
-    return render(request,'client/candidate-register.html',{'title':'register','industry':industry})
+    skills = SkillSet.objects.all()
+    return render(request,'client/candidate-register.html',{'title':'register','industry':industry,'skills':skills})
 
 
 # def candidate_register(request):
@@ -315,3 +329,24 @@ def fetchFunctionalArea(request):
         except ObjectDoesNotExist:
             return JsonResponse({'error': 'Industries not found'}, status=404)
     return JsonResponse({'error': 'No IDs provided'}, status=400)
+
+import pandas as pd
+import numpy as np
+def mapIndustry(request):
+    df = pd.read_excel('Cleaned_List_of_Industry_Roles.xlsx')
+    for index, row in df.iterrows():
+        # Get or create the IndustryType
+        print(row[1])
+        industry_type, created = IndustryType.objects.get_or_create(name=row[1])  # Adjust the column name as necessary
+        industry_type.save()
+        for i in range(2,len(row)):
+            print(row[i],type(row[i]))
+            if type(row[i]) != float:
+        # Create FunctionalArea for each entry
+        # Assuming other columns are to be stored in FunctionalArea model. Adjust 'ColumnName' as necessary.
+                functional_area = FunctionalArea.objects.create(
+                    industry=industry_type,
+                    name=row[i]  # Replace 'FunctionalAreaColumnName' with actual column name
+                )
+                functional_area.save()
+    return JsonResponse('done',safe=False)

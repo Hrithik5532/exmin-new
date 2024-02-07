@@ -5,3 +5,6 @@ from Authentication.models import *
 admin.site.register(User)
 admin.site.register(SkillSet)
 admin.site.register(Recruiter)
+admin.site.register(Employee)
+admin.site.register(IndustryType)
+admin.site.register(FunctionalArea)

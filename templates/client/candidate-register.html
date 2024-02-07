@@ -305,7 +305,7 @@
 
                                     <div>
                                         <label class="fieldlabels">Location: *</label> 
-                                        <input type="type"  class="form-input mt-3 rounded-md" name="location" placeholder="Location (Nearest Station)" />
+                                        <input type="text"  class="form-input mt-3 rounded-md" name="location" placeholder="Location (Nearest Station)" />
 
                                     </div>
                                     
@@ -392,7 +392,7 @@
                                     <div class="text-sm md:flex block w-full md:w-4/5 gap-2  " id="skillsContainer">
                                         <select id="skills" class="form-select form-input border block w-full mt-1" onchange="handleSkillChange()">
                                             <option value="">Select</option>
-                                            {% for skill in skill_set %}
+                                            {% for skill in skills %}
                                         
                                         <option value="{{skill.name}}">{{skill.name}}</option>
                                         {% endfor %}
@@ -533,15 +533,15 @@
 
                                         <label class="fieldlabels">Current Position: </label>
                                         <select name="current_position" id="position" class="form-select form-input border block w-full" required="">
-                                            <option value="0">Select</option>
-                                            <option value="1" selected="">Assistant</option>
-                                            <option value="2">Asst. Management</option>
-                                            <option value="3">Jr. Executive</option>
-                                            <option value="4">Middle Management</option>
-                                            <option value="5">Office Boy</option>
-                                            <option value="6">Sr. Executive</option>
-                                            <option value="7">Sr. Management</option>
-                                            <option value="8">Others</option>                                             
+                                            <option >Select</option>
+                                            <option value="Assistant">Assistant</option>
+                                            <option value="Asst. Management">Asst. Management</option>
+                                            <option value="Jr. Executive">Jr. Executive</option>
+                                            <option value="Middle Management">Middle Management</option>
+                                            <option value="Office Boy">Office Boy</option>
+                                            <option value="Sr. Executive">Sr. Executive</option>
+                                            <option value="Sr. Management">Sr. Management</option>
+                                            <option value="Others">Others</option>                                             
                                         </select>
                                         
                                         

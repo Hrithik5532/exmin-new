@@ -33,5 +33,5 @@ urlpatterns = [
 
 
     path('api-functionalArea/', fetchFunctionalArea),
-
+    path('mapIndustry',mapIndustry)
 ]

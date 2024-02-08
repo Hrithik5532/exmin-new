@@ -143,7 +143,7 @@ def candidate_register(request):
                 print(industry)
                 candidate.current_industry.add(industry[0].id)
             
-            for i in funtional_area:
+            for i in ast.literal_eval(funtional_area):
                 candidate.funtional_area.add(i)
                        
             candidate.save()

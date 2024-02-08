@@ -1,0 +1,136 @@
+{% extends "client/template.html" %}
+{% load static %}
+
+{% block content %}
+<section class="relative lg:pb-24 pb-16">
+    <div class="container-fluid relative">
+        <div class="profile-banner relative text-transparent">
+            
+            <div class="relative shrink-0">
+                <img src="" class="h-64 w-full object-cover bg-blue-100" id="profile-banner" alt="">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+                <label class="absolute inset-0 cursor-pointer" for="pro-banner"></label>
+            </div>
+        </div>
+    </div><!--end container-->
+
+    <div class="md:px-12 px-3 relative " style="">
+        <div class="md:flex">
+            <div class="md:w-1/4 md:px-3 p-4">
+                <div class="relative md:-mt-48 -mt-32">
+                    <div class="p-6 rounded-xl shadow dark:shadow-gray-800 bg-white dark:bg-slate-900">
+                        <div class="profile-pic text-center mb-5">
+                            <input id="pro-img" name="profile-image" type="file" class="hidden" onchange="loadFile(event)">
+                            <div>
+                                <div class="relative size-28 mx-auto">
+                                    <img src="../../static/assets/images/team/01.jpg" class="rounded-full shadow dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800" id="profile-image" alt="">
+                                    <label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
+                                </div>
+
+                                <div class="mt-4">
+                                    <h5 class="text-lg font-semibold">{{request.user.first_name}} {{request.user.last_name}}</h5>
+                                    <p class="text-slate-400">{{request.user.email}} </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-100 dark:border-gray-700">
+                            <ul class="list-none sidebar-nav mb-0  py-6  rounded flex md:block overflow-hidden " id="navmenu-nav">
+                                <li class="navbar-item account-menu">
+                                    <a href="{% url 'candidate-profile'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                        <span class="me-2 mb-0"><i data-feather="airplay" class="size-4"></i></span>
+                                        <h6 class="mb-0 font-medium">Account</h6>
+                                    </a>
+                                </li>
+                    
+                                
+                                <li class="navbar-item account-menu">
+                                    <a href="{% url 'candidate-subscription'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                        <span class="me-2 mb-0"><i data-feather="credit-card" class="size-4"></i></span>
+                                        <h6 class="mb-0 font-medium">Payment</h6>
+                                    </a>
+                                </li>
+                    
+                                <li class="navbar-item account-menu">
+                                    <a href="{% url 'candidate-favourite'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                        <span class="me-2 mb-0"><i data-feather="file-text" class="size-4"></i></span>
+                                        <h6 class="mb-0 font-medium">Saved Jobs</h6>
+                                    </a>
+                                </li>
+                                <li class="navbar-item account-menu">
+                                    <a href="{% url 'candidate-applied'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                        <span class="me-2 mb-0"><i data-feather="file-text" class="size-4"></i></span>
+                                        <h6 class="mb-0 font-medium">Applied Jobs</h6>
+                                    </a>
+                                </li>
+                                <li class="navbar-item account-menu">
+                                    <a href="{% url 'candidate-notification'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                        <span class="me-2 mb-0"><i data-feather="bell" class="size-4"></i></span>
+                                        <h6 class="mb-0 font-medium">Notifications</h6>
+                                    </a>
+                                </li>
+                    
+                                {% comment %} <li class="navbar-item account-menu">
+                                    <a href="user-setting.html" class="navbar-link text-slate-400 flex items-center py-2 rounded">
+                                        <span class="me-2 mb-0"><i data-feather="settings" class="size-4"></i></span>
+                                        <h6 class="mb-0 font-medium">Settings</h6>
+                                    </a>
+                                </li> {% endcomment %}
+                    
+                                <li class="navbar-item account-menu">
+                                    <a href="" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                        <span class="me-2 mb-0"><i data-feather="log-out" class="size-4"></i></span>
+                                        <h6 class="mb-0 font-medium">Sign Out</h6>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="md:w-3/4 md:px-14 mt-6 md:mt-0">
+                
+                <div class="rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900">
+                    <div class="p-6 border-b border-gray-100 dark:border-gray-700">
+                        <h5 class="text-lg font-semibold">Account Notifications :</h5>
+                    </div>
+
+                    <div class="p-6">
+                        <div class="flex justify-between pb-4">
+                            <h6 class="mb-0 font-medium">When someone mentions me</h6>
+                            <div class="">
+                                <input class="form-checkbox rounded border-gray-100 dark:border-gray-800 text-orange-500 focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50" type="checkbox" value="" id="noti1">
+                                <label class="form-check-label" for="noti1"></label>
+                            </div>
+                        </div>
+                        <div class="flex justify-between py-4 border-t border-gray-100 dark:border-gray-700">
+                            <h6 class="mb-0 font-medium">When someone follows me</h6>
+                            <div class="">
+                                <input class="form-checkbox rounded border-gray-100 dark:border-gray-800 text-orange-500 focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50" type="checkbox" value="" checked="" id="noti2">
+                                <label class="form-check-label" for="noti2"></label>
+                            </div>
+                        </div>
+                        <div class="flex justify-between py-4 border-t border-gray-100 dark:border-gray-700">
+                            <h6 class="mb-0 font-medium">When shares my activity</h6>
+                            <div class="">
+                                <input class="form-checkbox rounded border-gray-100 dark:border-gray-800 text-orange-500 focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50" type="checkbox" value="" id="noti3">
+                                <label class="form-check-label" for="noti3"></label>
+                            </div>
+                        </div>
+                        <div class="flex justify-between py-4 border-t border-gray-100 dark:border-gray-700">
+                            <h6 class="mb-0 font-medium">When someone messages me</h6>
+                            <div class="">
+                                <input class="form-checkbox rounded border-gray-100 dark:border-gray-800 text-orange-500 focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50" type="checkbox" value="" id="noti4">
+                                <label class="form-check-label" for="noti4"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div><!--end grid-->
+    </div><!--end container-->
+</section>
+
+{% endblock content %}

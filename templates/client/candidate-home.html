@@ -37,7 +37,7 @@
                         <div class="border-t border-gray-100 dark:border-gray-700">
                             <ul class="list-none sidebar-nav mb-0  py-6  rounded flex md:block overflow-hidden " id="navmenu-nav">
                                 <li class="navbar-item account-menu">
-                                    <a href="" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                    <a href="{% url 'candidate-profile'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
                                         <span class="me-2 mb-0"><i data-feather="airplay" class="size-4"></i></span>
                                         <h6 class="mb-0 font-medium">Account</h6>
                                     </a>
@@ -45,21 +45,26 @@
                     
                                 
                                 <li class="navbar-item account-menu">
-                                    <a href="user-payment.html" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                    <a href="{% url 'candidate-subscription'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
                                         <span class="me-2 mb-0"><i data-feather="credit-card" class="size-4"></i></span>
                                         <h6 class="mb-0 font-medium">Payment</h6>
                                     </a>
                                 </li>
                     
                                 <li class="navbar-item account-menu">
-                                    <a href="user-invoice.html" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                    <a href="{% url 'candidate-favourite'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
                                         <span class="me-2 mb-0"><i data-feather="file-text" class="size-4"></i></span>
                                         <h6 class="mb-0 font-medium">Saved Jobs</h6>
                                     </a>
                                 </li>
-                    
                                 <li class="navbar-item account-menu">
-                                    <a href="user-notification.html" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                    <a href="{% url 'candidate-applied'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                        <span class="me-2 mb-0"><i data-feather="file-text" class="size-4"></i></span>
+                                        <h6 class="mb-0 font-medium">Applied Jobs</h6>
+                                    </a>
+                                </li>
+                                <li class="navbar-item account-menu">
+                                    <a href="{% url 'candidate-notification'%}" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
                                         <span class="me-2 mb-0"><i data-feather="bell" class="size-4"></i></span>
                                         <h6 class="mb-0 font-medium">Notifications</h6>
                                     </a>
@@ -73,7 +78,7 @@
                                 </li> {% endcomment %}
                     
                                 <li class="navbar-item account-menu">
-                                    <a href="lock-screen.html" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
+                                    <a href="" class="navbar-link p-2 text-slate-400 flex items-center py-2 rounded">
                                         <span class="me-2 mb-0"><i data-feather="log-out" class="size-4"></i></span>
                                         <h6 class="mb-0 font-medium">Sign Out</h6>
                                     </a>

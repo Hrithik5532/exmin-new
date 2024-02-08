@@ -19,7 +19,7 @@ class FunctionalAreaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FunctionalArea
-        fields = [ 'name']
+        fields = [ 'id' ,'name']
         # Optional: You can exclude 'id' field if you don't want to include it in the serialized data
         # exclude = ['id']
 

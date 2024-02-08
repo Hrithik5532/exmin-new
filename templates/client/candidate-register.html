@@ -879,7 +879,9 @@
         var selectedValue = dropdown.value;
         var selectedText = dropdown.options[dropdown.selectedIndex].text;
         var selectedContainer = document.getElementById('selectedFuntionalArea');
-    
+        
+        console.log(selectedValue)
+
         if (!selectedValue) {
             alert("Please select a functional area.");
             return;
@@ -925,7 +927,7 @@
         var hiddenInput = document.getElementById('current_industry');
         var selectedIndustries = hiddenInput.value; // This is your list of selected industry IDs
         var functionalAreaDropdown = document.getElementById('functional_area');
-    
+        console.log(selectedIndustries);
         if (selectedIndustries) {
             fetch(`http://127.0.0.1:8000/api-functionalArea/?ids=${selectedIndustries}`)
             .then(response => response.json())
@@ -939,6 +941,7 @@
     
                     // Populate the dropdown with options from the API response
                     data.forEach(function(area) {
+                        console.log(area)
                         var option = new Option(area.name, area.id); // Assuming 'name' and 'id' are the properties
                         functionalAreaDropdown.add(option);
                     });

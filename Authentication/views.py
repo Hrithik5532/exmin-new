@@ -136,8 +136,9 @@ def candidate_register(request):
                 skill = SkillSet.objects.get_or_create(name=k)
                 print(skill)
                 candidate.skills.add(skill[0].id)
+                candidate.save()
             
-            for i in ast.literal_eval(current_industry):
+            for i in current_industry:
                 industry = IndustryType.objects.get_or_create(name=i)
                 print(industry)
                 candidate.current_industry.add(industry[0].id)
@@ -367,8 +368,9 @@ def employer_profile(request,slug):
 
 
 def employer_setting(request):
-    return render(request, 'client/employer-profile.html',{'title':'Profile Settings'})
-
+    company = Recruiter.objects.get(user=request.user)
+    job_posts = JobPositions.objects.filter(company=company)
+    return render(request, 'client/employer-profile.html',{'title':'Profile Settings','company':company,'job_posts':job_posts})
 def all_companies(request):
     companies = Recruiter.objects.order_by().all()
     alphabet = sorted(companies, key=lambda x: x.company_name)
@@ -403,6 +405,9 @@ def fetchFunctionalArea(request):
         except ObjectDoesNotExist:
             return JsonResponse({'error': 'Industries not found'}, status=404)
     return JsonResponse({'error': 'No IDs provided'}, status=400)
+
+
+
 
 def candidate_view(request):
     return render(request, "client/candidate-view.html", {'title': 'Candidate View'})

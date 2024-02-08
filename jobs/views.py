@@ -104,9 +104,14 @@ def job_post(request):
                                            )
         
         for i in ast.literal_eval(selectedIndustries):
-            industry = IndustryType.objects.get_or_create(name=i)
+            print(i,'\n','-')
+            industry = IndustryType.objects.get(name=i)
             print(industry)
             post.industry_type.add(industry[0].id)
+            
+        
+            
+            
             
     
             

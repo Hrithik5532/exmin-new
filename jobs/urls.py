@@ -10,5 +10,6 @@ urlpatterns = [
     path('/candidate-list', candidate_list, name='candidate-list'),
     path('/job-post', job_post, name='job-post'),
 
+    path('my-vacancies',my_vacancies,name="my-vacancies")
     # Add more paths as needed
 ]

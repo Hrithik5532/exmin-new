@@ -43,14 +43,14 @@
                         <li>
                             <a href="{% url 'employer-setting' %}" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="user" class="size-4 me-2"></i>Profile</a>
                         </li>
+                        <li>
+                            <a href="{% url 'employer-setting' %}" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="shopping-cart" class="size-4 me-2"></i>Cart</a>
+                        </li>
                         {% else %}
                         <li>
                             <a href="{% url 'candidate-profile' %}" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="user" class="size-4 me-2"></i>Profile</a>
                         </li>
                         {% endif %}
-                        <li>
-                            <a href="" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="settings" class="size-4 me-2"></i>Settings</a>
-                        </li>
                         <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
                         
                         <li>
@@ -94,9 +94,13 @@
                 {% if request.user.account_type == 'Employer' %}
                 
                 <li><a href="{%url 'candidate-list'%}" class="sub-menu-item">Candidate List</a></li>
-                <li><a href="{%url 'job-post'%}" class="sub-menu-item">Create a Job</a></li>
+                <li><a href="{%url 'candidate-list'%}" class="sub-menu-item">Shortlisted </a></li>
+
+
+                <li><a href="{%url 'job-post'%}" class="sub-menu-item">Create a Vacancy</a></li>
+                <li><a href="{%url 'my-vacancies'%}" class="sub-menu-item">My Vacancies</a></li>
                 {% else %}
-                <li><a href="{%url 'job-list'%}" class="sub-menu-item">Jobs</a></li>
+                <li><a href="{%url 'job-list'%}" class="sub-menu-item">Vacancies</a></li>
                 <li><a href="{%url 'all_companies'%}" class="sub-menu-item">Companies</a></li>
                 
                 <li><a href="{%url 'about'%}" class="sub-menu-item">About Us</a></li>

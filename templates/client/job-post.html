@@ -68,15 +68,17 @@
                                         </div>
                                     </div>
                                     <div class="text-sm flex w-full gap-2 md:w-4/5 ">
-                                        <select class="form-select form-input border block w-full mt-1" name="functional_area">
-                                            {% for i in functional_area %}
-                                            
-                                            <option value="{{i.id}}">{{i.name}}</option>
-                                            {% endfor %}
-                                            </select>
+                                        <select name="functional_area" id="functional_area" class="form-select form-input border block w-full mt-1">
+                                            <!-- Options will be populated dynamically based on the selected industry -->
+                                        </select>
+                                        <button id="addFuntionalArea" type="button" class="btn bg-blue-900 text-white" onclick="addFuntionalArea_()">Add</button>
+                                        <!-- Container for displaying selected industries as buttons -->
+                                        <!-- Hidden input to store added industries -->
+                                        <input type="hidden" id="funtional_area" name="funtional_area">
                                         
                                     </div>
-                                    
+                                    <div id="selectedFuntionalArea" class="m-2"></div>
+
                                 </div>
 
                                 <div class="mb-4 text-start md:flex block w-full gap-2 " >

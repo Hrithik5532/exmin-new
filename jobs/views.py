@@ -137,3 +137,8 @@ def job_post(request):
     
     
     return render(request, 'client/job-post.html',{'title':'Post A job','functional_area':functional_area,'industry_type':industry_type,'skill_set':skill_set})
+
+
+def my_vacancies(request):
+    jobs = JobPositions.objects.filter(company=request.user.recruiter)
+    return render(request,'client/my-vacancies.html',{'jobs':jobs})

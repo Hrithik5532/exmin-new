@@ -91,7 +91,7 @@ def job_post(request):
         
         post = JobPositions.objects.create(company=Recruiter.objects.get(user=request.user),
                         operational_area = operational_area,
-                        functional_area = FunctionalArea.objects.get(name=functional_area),
+                        functional_area = FunctionalArea.objects.get(id=functional_area),
                         shipment_expertise=shipment_expertise,
                         position_level=position_level,
                         state=state,city=city,job_location=job_location,

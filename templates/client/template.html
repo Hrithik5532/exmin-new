@@ -48,7 +48,10 @@
         
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
         <div class="inline-flex flex-col justify-center bg-transparent h-screen  text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-          <div class="bg-white shadow-xl rounded-lg  px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="bg-white relative shadow-xl rounded-lg  px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class='absolute top-0 ' style="right: 0;">
+              <button type="button" class=" py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2" onclick="toggleModal()"><i data-feather="x" class="size-4"></i> </button>
+            </div>
               <a href="#">
                   <img src="../static/assets/images/EximLogo.png" class="mx-auto  flex" alt="" style="height:30px;">
               </a>
@@ -67,7 +70,6 @@
                       <p class="text-slate-400 mb-0"><a href="reset-password.html" class="text-slate-400">Forgot password ?</a></p>
                   </div>
                   <div class="bg-gray-200 px-4 py-3 text-center rounded-lg">
-                    <button type="button" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2" onclick="toggleModal()"><i class="fas fa-times"></i> Cancel</button>
                     <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded font-medium hover:bg-blue-700 mr-2 transition duration-500"><i class="fas fa-plus"></i> Submit</button>
                   </div>
               </form>

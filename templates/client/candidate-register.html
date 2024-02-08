@@ -929,7 +929,7 @@
         var functionalAreaDropdown = document.getElementById('functional_area');
         console.log(selectedIndustries);
         if (selectedIndustries) {
-            fetch(`http://127.0.0.1:8000/api-functionalArea/?ids=${selectedIndustries}`)
+            fetch(`http://103.160.144.16:8080//api-functionalArea/?ids=${selectedIndustries}`)
             .then(response => response.json())
             .then(data => {
                     // Assuming the API returns an array of functional areas

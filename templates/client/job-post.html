@@ -40,16 +40,7 @@
                                 <div class="w-full p-2 m-2 bg-gray-300 text-blue-700 text-lg font-bold rounded-lg text-center">
                                     VACANCY DETAILS
                                 </div>
-                                <div class="mb-4 md:flex block w-full justify-between items-center">
-                                    <div class="md:w-2/5 px-3 ">
-                                        <label class="font-semibold" for="job_position">Job Position:</label>
-                                        
-                                    </div>
-                                    <div class="text-sm flex w-full md:w-4/5 gap-2  ">
-                                        <input id="job_position" name="job_position" type="text" class="form-input mt-3 rounded-md" placeholder="Enter Job Position">
-                                    </div>
-                                    
-                                </div>
+                                
                                 
                                 <div class="mb-4 text-start md:flex block w-full justify-between">
                                     <div class="flex flex-col p-2">
@@ -118,16 +109,16 @@
                                     </div>
                                     <div class="text-sm flex w-full md:w-4/5 gap-3 px-2">
                                             <div class="flex items-center gap-2">
-                                                <input type="radio" id="import" name="shipment_expertise" value="Sea">
-                                                <label for="import">Sea</label>
+                                                <input type="radio" id="Sea" name="shipment_expertise" value="Sea">
+                                                <label for="Sea">Sea</label>
                                             </div>
                                             <div class="flex items-center gap-2">
-                                                <input type="radio" id="export" name="shipment_expertise" value="Air">
-                                                <label for="air">Air</label>
+                                                <input type="radio" id="Air" name="shipment_expertise" value="Air">
+                                                <label for="Air">Air</label>
                                             </div>
                                             <div class="flex items-center gap-2">
-                                                <input type="radio" id="both" name="shipment_expertise" value="Both">
-                                                <label for="both">Both</label>
+                                                <input type="radio" id="both2" name="shipment_expertise" value="Both">
+                                                <label for="both2">Both</label>
                                             </div>
 
                                     </div>
@@ -154,8 +145,9 @@
                                         <label class="font-semibold" for="RegisterName">State <span style="color:red">*</span>:</label>
                                     </div>
                                     <div class="text-sm flex w-full md:w-4/5 gap-2">
-                                        <select id="stateId" class="states form-select form-input border block w-full mt-1" name="state">
-                                            <option value="Maharashtra">MH</option>
+                                        <select name="state" class="form-input mt-3 rounded-md" id="state" onchange="loadCities()">
+                                            <option value="form-input mt-3 rounded-md">Select State</option>
+                                            <!-- State options will be dynamically added here -->
                                         </select>
                                     </div>
                                 </div>
@@ -165,8 +157,9 @@
                                         <label class="font-semibold" for="RegisterName">City <span style="color:red">*</span>:</label>
                                     </div>
                                     <div class="text-sm flex w-full md:w-4/5 gap-2">
-                                        <select id="cityId" class="form-select form-input border block w-full mt-1" name="city">
-                                            <option value="Mumbai">Mumbai</option>
+                                        <select class="form-input mt-3 rounded-md" name="city" id="city">
+                                            <option value="form-input mt-3 rounded-md">Select City</option>
+                                            <!-- City options will be dynamically added here -->
                                         </select>
                                     </div>
                                 </div>
@@ -401,6 +394,82 @@
         
         
         
-        
+        {% comment %} State and City {% endcomment %}
+<script>
+    var accessToken;  // Declare accessToken in the global scope
+
+    // Step 1: Get Access Token
+    fetch("https://www.universal-tutorial.com/api/getaccesstoken", {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+            "api-token": "lv8kpt1RcPmtXC3iWGOR1MuDYy5T0030EtLgZavfwZ-pYVbxLOje1ByAhrhQvK007Qo",
+            "user-email": "hrithikhadawale75@gmail.com"
+        }
+    })
+    .then(response => response.json())
+    .then(tokenResponse => {
+        if (tokenResponse.error) throw new Error(tokenResponse.error);
+
+        // Set the accessToken in the global scope
+        accessToken = tokenResponse.auth_token;
+
+        // Use Access Token to get States
+        return fetch("https://www.universal-tutorial.com/api/states/India", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + accessToken,
+                "Accept": "application/json"
+            }
+        });
+    })
+    .then(statesResponse => statesResponse.json())
+    .then(states => {
+        // Add state options to the state dropdown
+        var stateDropdown = document.getElementById("state");
+        states.forEach(state => {
+            var option = document.createElement("option");
+            option.value = state.state_name;
+            option.text = state.state_name;
+            stateDropdown.add(option);
+        });
+    })
+    .catch(error => {
+        console.error("Error fetching states:", error);
+    });
+
+    function loadCities() {
+        var stateDropdown = document.getElementById("state");
+        var cityDropdown = document.getElementById("city");
+
+        // Get the selected state value
+        var selectedState = stateDropdown.value;
+
+        // Clear existing options in city dropdown
+        cityDropdown.innerHTML = '<option value="">-------Select ------</option>';
+
+        // If a state is selected, fetch cities for that state
+        if (selectedState !== "") {
+            fetch(`https://www.universal-tutorial.com/api/cities/${selectedState}`, {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + accessToken,
+                    "Accept": "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then(cities => {
+                // Add city options to the city dropdown
+                cities.forEach(city => {
+                    var option = document.createElement("option");
+                    option.value = city.city_name;
+                    option.text = city.city_name;
+                    cityDropdown.add(option);
+                });
+            })
+            .catch(error => console.error(error));
+        }
+    }
+</script>
         
 {% endblock content %}

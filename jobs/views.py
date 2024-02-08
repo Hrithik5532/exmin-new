@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 # Create your views here.
-from Authentication.models import SkillSet,Recruiter,User
-from .models import JobPositions,JobApplications
+from Authentication.models import SkillSet,Recruiter,User,RecruiterPaymentdetails
+from .models import JobPositions,JobApplications,Employee
 import ast
 from django.contrib import messages
 
@@ -42,13 +42,23 @@ def job_application(request,id):
 
 
 
-def candidate_view(request):
+def candidate_view(request,uuid):
     if not request.user.is_authenticated:
         return redirect('signin')
     if not request.user.account_type == 'Employer':
         messages.error(request,"Not allowed")
         return redirect('home')
-    return render(request, 'client/candidate-view.html',{'title':'Candidate profile'})
+    candidate = User.objects.get(id=uuid)
+    user_info = Employee.objects.get(user=candidate.id)
+    try :
+        if RecruiterPaymentdetails.objects.filter(user=request.user,employee=user_info).exists():
+            paid = True
+        else:
+            paid=False
+    except Exception as e:
+        print(e)
+        paid=False
+    return render(request, 'client/candidate-view.html',{'title':'Candidate profile','user_info':user_info,'candidate':candidate,'paid':paid})
 
 
 def candidate_list(request):
@@ -57,8 +67,8 @@ def candidate_list(request):
     if not request.user.account_type == 'Employer':
         messages.error(request,"Not allowed")
         return redirect('home')
-        
-    return render(request, 'client/candidate-list.html',{'title':'Candidate List'})
+    canditates = Employee.objects.all()
+    return render(request, 'client/candidate-list.html',{'title':'Candidate List','canditates':canditates})
 
 
 def job_post(request):
@@ -69,7 +79,6 @@ def job_post(request):
         return redirect('home')
         
     if request.method == 'POST':
-        job_position = request.POST.get('job_position')
         selectedIndustries = request.POST.get('selectedIndustries')
         functional_area = request.POST.get('functional_area')
         operational_area = request.POST.get('operational_area')
@@ -97,7 +106,6 @@ def job_post(request):
                         state=state,city=city,job_location=job_location,
                         international_location=international_location,
                         minsalary=minsalary,maxsalary=maxsalary,benefits=benefits,
-                        job_title=job_position,
                         description= description,
                         experience= experience,
                         end_date=end_date
@@ -107,19 +115,20 @@ def job_post(request):
             print(i,'\n','-')
             industry = IndustryType.objects.get(name=i)
             print(industry)
-            post.industry_type.add(industry[0].id)
+            post.industry_type.add(industry)
             
         
             
             
             
     
-            
+        print(addedSkills,"1111111111111")
         for k in ast.literal_eval(addedSkills):
             skill = SkillSet.objects.get_or_create(name=k)
             print(skill)
             post.skills_required.add(skill[0].id)
         post.save()
+        return redirect('job-details',post.id)
         
             
     industry_type = IndustryType.objects.all()

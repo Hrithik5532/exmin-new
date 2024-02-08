@@ -139,7 +139,7 @@ def candidate_register(request):
                 candidate.save()
             
             for i in current_industry:
-                industry = IndustryType.objects.get_or_create(name=i)
+                industry = IndustryType.objects.get(id=i)
                 print(industry)
                 candidate.current_industry.add(industry[0].id)
                 
@@ -264,15 +264,24 @@ def loginpage(request):
 def employer_register(request):
     if request.method == 'POST':
         company_name = request.POST.get('company_name')
-        # logo = request.FILES['logo']
+        logo = request.FILES['logo']
         email = request.POST.get('email')
         owner = request.POST.get('owner')
         authorized_person = request.POST.get('authorized_person')
         description = request.POST.get('description')
+        no_employess = request.POST.get('no_employess')
         address = request.POST.get('address')
         city = request.POST.get('city')
         state = request.POST.get('state')
         pincode = request.POST.get('pincode')
+        
+        linkedin = request.POST.get('linkedin')
+        facebook = request.POST.get('facebook')
+        instagram = request.POST.get('instagram')
+        twitter = request.POST.get('twitter')
+        map = request.POST.get('map')
+        
+        
         password = request.POST.get('password')
         if User.objects.filter(email=email).exists():
             messages.error(request,'Email Already Registered !')
@@ -285,12 +294,18 @@ def employer_register(request):
                 user=user,
                 company_name=company_name,
                 owner=owner,
+                employees=no_employess,
+                linkedin=linkedin,
+                facebook=facebook,
+                instagram=instagram,
+                twitter=twitter,
+                map_location=map,
                 authorized_person=authorized_person,
                 description=description,
                 
             )
-            # if logo:
-            #     recruiter.company_logo =logo
+            if logo:
+                recruiter.company_logo =logo
             recruiter.save()
             login(request, user)
             messages.success(request,"Registration Done !")
@@ -374,6 +389,8 @@ def employer_setting(request):
     company = Recruiter.objects.get(user=request.user)
     job_posts = JobPositions.objects.filter(company=company)
     return render(request, 'client/employer-profile.html',{'title':'Profile Settings','company':company,'job_posts':job_posts})
+
+
 def all_companies(request):
     companies = Recruiter.objects.order_by().all()
     alphabet = sorted(companies, key=lambda x: x.company_name)

@@ -103,6 +103,7 @@ class PaymentDetails(models.Model):
 class RecruiterPaymentdetails(models.Model):
     payment_detail = models.OneToOneField(PaymentDetails,on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee,on_delete=models.CASCADE)
     status= models.BooleanField(default=False)
     
     

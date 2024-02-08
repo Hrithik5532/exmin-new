@@ -17,7 +17,6 @@ class JobPositions(models.Model):
     minsalary = models.CharField(max_length=200,blank=True, null=True)
     maxsalary = models.CharField(max_length=200,blank=True, null=True)
     benefits = models.TextField(blank=True, null=True)
-    job_title = models.CharField(max_length=255)
     description = RichTextField(blank=True, null=True)
     experience=models.CharField(max_length=255,blank=True, null=True)
     max_experience =models.CharField(max_length=255,blank=True, null=True)

@@ -75,7 +75,7 @@ def candidate_register(request):
         
         
         current_industry = request.POST.getlist('current_industry')
-        funtional_area = request.POST.getlist('funtional_area')
+        funtional_area = request.POST.get('funtional_area')
         
         current_position =request.POST.get('current_position')
         shipment_expertise =request.POST.get('shipment_expertise')
@@ -142,8 +142,11 @@ def candidate_register(request):
                 industry = IndustryType.objects.get_or_create(name=i)
                 print(industry)
                 candidate.current_industry.add(industry[0].id)
-            
-            for i in ast.literal_eval(funtional_area):
+                
+                
+            functional_area_ids = [int(id.strip()) for id in funtional_area.split(',')]
+
+            for i in functional_area_ids:
                 candidate.funtional_area.add(i)
                        
             candidate.save()

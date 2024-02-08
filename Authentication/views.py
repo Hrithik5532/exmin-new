@@ -137,8 +137,10 @@ def candidate_register(request):
                 print(skill)
                 candidate.skills.add(skill[0].id)
             
-            for i in current_industry:
-                candidate.current_industry.add(i) 
+            for i in ast.literal_eval(current_industry):
+                industry = IndustryType.objects.get_or_create(name=i)
+                print(industry)
+                candidate.current_industry.add(industry[0].id)
             
             for i in funtional_area:
                 candidate.funtional_area.add(i)
@@ -350,3 +352,69 @@ def mapIndustry(request):
                 )
                 functional_area.save()
     return JsonResponse('done',safe=False)
+
+
+
+def candidate_profile(request):
+    if not request.user.is_authenticated:
+        return redirect('signin')
+    return render(request, 'client/candidate-home.html')
+
+def employer_profile(request,slug):
+    company = Recruiter.objects.get(company_name=slug)
+    job_posts = JobPositions.objects.filter(company=company)
+    return render(request, 'client/employer-profile.html',{'title':'Profile Settings','company':company,'job_posts':job_posts})
+
+
+def employer_setting(request):
+    return render(request, 'client/employer-profile.html',{'title':'Profile Settings'})
+
+def all_companies(request):
+    companies = Recruiter.objects.order_by().all()
+    alphabet = sorted(companies, key=lambda x: x.company_name)
+
+    return render(request, 'client/companies.html',{'title':'Profile Settings','companies':alphabet})
+
+def employer_applicant_list(request):
+    return render(request, "client/employer-applicant-list.html", {'title': 'Applicant List'})
+
+def employer_notification(request):
+    return render(request, "client/employer-notification.html", {'title': 'Notifications'})
+
+def employer_posted_jobs(request):
+    return render(request, "client/employer-posted-jobs.html", {'title': 'Posted Jobs'})
+
+
+
+
+from Dashboard.serializers import FunctionalAreaSerializer
+from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
+
+def fetchFunctionalArea(request):
+    # Get 'ids' from query parameters
+    ids = request.GET.get('ids')
+    if ids:
+        ids_list = ids.split(',')  # Split the string into a list of IDs
+        try:
+            industries = IndustryType.objects.filter(id__in=ids_list)
+            functional_areas = FunctionalArea.objects.filter(industry__in=industries)
+            return JsonResponse(FunctionalAreaSerializer(functional_areas, many=True).data, safe=False)
+        except ObjectDoesNotExist:
+            return JsonResponse({'error': 'Industries not found'}, status=404)
+    return JsonResponse({'error': 'No IDs provided'}, status=400)
+
+def candidate_view(request):
+    return render(request, "client/candidate-view.html", {'title': 'Candidate View'})
+
+def candidate_subscription(request):
+    return render(request,"client/candidate-subscription.html",{'title':'Subscription'})
+
+def candidate_favourite(request):
+    return render(request, "client/candidate-favourite.html", {'title': 'Saved Jobs'})
+
+def candidate_notification(request):
+    return render(request, "client/candidate-notification.html", {'title': 'Notifications'})
+
+def candidate_applied(request):
+    return render(request, "client/candidate-applied.html", {'title': 'Applied Jobs'})

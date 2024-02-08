@@ -33,5 +33,17 @@ urlpatterns = [
 
 
     path('api-functionalArea/', fetchFunctionalArea),
-    path('mapIndustry',mapIndustry)
+    path('mapIndustry',mapIndustry),
+    path('candidate-subscription', candidate_subscription, name='candidate-subscription'),
+    path('candidate-favourite', candidate_favourite, name='candidate-favourite'),
+    path('candidate-applied', candidate_applied, name='candidate-applied'),
+    path('candidate-notification', candidate_notification, name='candidate-notification'),
+    path('candidate-view/', candidate_view, name='candidate_view'),
+
+    
+    path('employer-setting',employer_setting,name="employer-setting"),
+    path('all-companies',all_companies,name="all_companies"),
+    path('employer-notification/', employer_notification, name='employer-notification'),
+    path('employer-posted-jobs/', employer_posted_jobs, name='employer-posted-jobs'),
+    path('employer-applicant-list/', employer_applicant_list, name='employer-applicant-list'),
 ]
